@@ -1,0 +1,31 @@
+header {
+  height: 50px;
+  width: 100vw;
+  background: #8aaae5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerLeft {
+  margin: 0 0 0 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.headerLogo {
+  height: 45px;
+  margin-right: 8px;
+}
+
+.headerBtn {
+  margin: 0;
+  background-color: transparent;
+  border-color: transparent;
+  border: 0px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
