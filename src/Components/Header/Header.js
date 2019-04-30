@@ -9,7 +9,7 @@ export default class Header extends Component {
         <header>
           <Router>
             <div className='headerLeft'>
-              <Link to='/'>
+              <Link className='headerLogoParent' to='/'>
                 <img className='headerLogo' src="https://i.ibb.co/kcBcSnq/compass-logo-inverted.png" alt="My Product Compass logo"/>
               </Link>
               <Link to='/'>

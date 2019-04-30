@@ -14,6 +14,12 @@ header {
   align-items: center;
 }
 
+.headerLogoParent {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .headerLogo {
   height: 45px;
   margin-right: 8px;
