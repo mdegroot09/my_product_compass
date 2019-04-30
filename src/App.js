@@ -1,14 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './Components/Header/Header.css'
 import Header from './Components/Header/Header'
+import routes from './routes'
+import {HashRouter as Router} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-    </div>
+    <Router>
+      <div className="App">
+        <Header/>
+        {routes}
+      </div>
+    </Router>
   );
 }
 

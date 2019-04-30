@@ -7,23 +7,33 @@ export default class Header extends Component {
     return(
       <div>
         <header>
-          <div className='headerLeft'>
-            <img className='headerLogo' src="https://i.ibb.co/kcBcSnq/compass-logo-inverted.png" alt="My Product Compass logo"/>
-            <Router>
+          <Router>
+            <div className='headerLeft'>
+              <Link to='/'>
+                <img className='headerLogo' src="https://i.ibb.co/kcBcSnq/compass-logo-inverted.png" alt="My Product Compass logo"/>
+              </Link>
               <Link to='/'>
                 <button className='headerBtn'>Home</button>
               </Link>
-              <div className='headerBtn dropdown'>
-                <span className='headerBtn'>Create</span>
-              </div>
+              <Link to='/tasks/newtask'>
+                <button className='headerBtn'>Create</button>
+              </Link>
               <Link to='/tasks'>
                 <button className='headerBtn'>Manage</button>
               </Link>
               <Link to='/about'>
-              <button className='headerBtn'>About</button>
+                <button className='headerBtn'>About</button>
               </Link>
-            </Router>
-          </div>
+            </div>
+            <div className='headerRight'>
+              <Link to='/register'>
+                <button className='headerBtn'>Signup</button>
+              </Link>
+              <Link to='/login'>
+                <button className='headerBtn'>Login</button>
+              </Link>
+            </div>
+          </Router>
         </header>
       </div>
     )
