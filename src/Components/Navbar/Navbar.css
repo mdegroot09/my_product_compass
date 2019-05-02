@@ -35,6 +35,11 @@ header {
   font-size: 16px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-transform: lowercase;
+  z-index: 0;
+}
+
+.headerBtn:hover {
+  color: rgb(214, 214, 214);
 }
 
 .headerRight {

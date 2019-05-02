@@ -2,6 +2,7 @@ body {
   background-image: url('https://utilligent.com/wp-content/uploads/2017/11/Skyscrapers-904377316.jpg'); 
   background-size: 100% 100%;
   background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   width: 100wh;
 }
@@ -14,7 +15,7 @@ body {
 .App {
   text-align: center;
   color: white;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
