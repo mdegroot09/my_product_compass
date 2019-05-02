@@ -3,7 +3,11 @@ const express = require('express')
 const app = express()
 const session = require('express-session')
 const massive = require('massive')
-const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
+const taskCtrl = require('./controller/taskCtrl')
+const authCtrl = require('./controller/authCtrl')
+const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
+
+app.use(express.json())
 
 massive(CONNECTION_STRING).then(db => {
   app.set('db', db)
@@ -12,3 +16,4 @@ massive(CONNECTION_STRING).then(db => {
   })
 })
 
+app.get('/tasks', taskCtrl.getTasks)
