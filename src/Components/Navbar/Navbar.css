@@ -1,7 +1,7 @@
 header {
   height: 50px;
   width: 100vw;
-  background: #8aaae5;
+  padding-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,14 +26,15 @@ header {
 }
 
 .headerBtn {
-  margin: 0;
+  margin: 1vw;
   background-color: transparent;
   border-color: transparent;
   border: 0px;
   color: white;
   cursor: pointer;
   font-size: 16px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-transform: lowercase;
 }
 
 .headerRight {

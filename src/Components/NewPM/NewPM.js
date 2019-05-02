@@ -4,7 +4,7 @@ export default class NewPM extends Component {
   render() {
     return (
       <div>
-        NewPM
+        <h2>Register</h2>
       </div>
     )
   }

@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import './Header.css'
 import {HashRouter as Router, Link} from 'react-router-dom'
 
 export default class Header extends Component {

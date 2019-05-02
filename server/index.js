@@ -5,6 +5,7 @@ const session = require('express-session')
 const massive = require('massive')
 const taskCtrl = require('./controller/taskCtrl')
 const authCtrl = require('./controller/authCtrl')
+const auth = require('./middleware/authMiddleware')
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 
 app.use(express.json())
@@ -25,4 +26,4 @@ app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.get('/auth/logout', authCtrl.logout)
 
-app.get('/tasks', taskCtrl.getTasks)
+app.get('/tasks', auth.usersOnly, taskCtrl.getTasks)

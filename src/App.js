@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import './Components/Header/Header.css'
-import Header from './Components/Header/Header'
+import './Components/Navbar/Navbar.css'
+import './Components/Home/Home.css'
+import Header from './Components/Navbar/Navbar'
 import routes from './routes'
 import {HashRouter as Router} from 'react-router-dom'
 
