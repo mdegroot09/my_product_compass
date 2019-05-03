@@ -23,6 +23,11 @@ header {
 .headerLogo {
   height: 45px;
   margin-right: 8px;
+  transition: all .1s ease-in-out;
+}
+
+.headerLogo:hover {
+  transform: scale(1.12);
 }
 
 .headerBtn {
@@ -35,11 +40,12 @@ header {
   font-size: 16px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-transform: lowercase;
-  z-index: 0;
+  transition: all .1s ease-in-out;
 }
 
 .headerBtn:hover {
-  color: rgb(214, 214, 214);
+  /* color: rgb(214, 214, 214); */
+  transform: scale(1.12);
 }
 
 .headerRight {

@@ -12,7 +12,6 @@ export default class Header extends Component {
                 <img className='headerLogo' src="https://i.ibb.co/kcBcSnq/compass-logo-inverted.png" alt="My Product Compass logo"/>
               </Link>
               <Link to='/'>
-                <button className='headerBtn'>test</button>
                 <button className='headerBtn'>Home</button>
               </Link>
               <Link to='/tasks/newtask'>

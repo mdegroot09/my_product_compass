@@ -1,7 +1,7 @@
 .homeMainDiv {
   width: 100vw;
-  height: 100%;
-  margin: 190px 0 0 0;
+  height: calc(100vh - 70px);
+  margin: 0 0 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,9 +18,38 @@
   z-index: 0;
 }
 
-h1 {
+.homeTitleDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeTitleSeg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.homeTitle {
   font-size: 100px;
   text-shadow: 0px 0px 10px rgb(114, 114, 114);
+  margin: 0 0 30px 0;
+  width: 100%;
+  transition: all .05s ease-in-out;
+}
+
+.homeTitle:hover {
+  transform: scale(1.12);
+}
+
+.titleImg {
+  width: 60px;
+  margin-top: 20px;
+}
+
+.titleImg:hover {
+  transform: scale(1.15);
 }
 
 .mainLogo {
@@ -37,12 +66,11 @@ h1 {
   color: white;
   font-size: 20px;
   font-weight: 600;
+  transition: all .15s ease-in-out;
 }
 
 .getStarted:hover {
   background: rgb(27, 78, 136);
-  height: 65px;
-  width: 155px;
-  font-size: 21px;
+  transform: scale(1.05);
   cursor: pointer;
 }
