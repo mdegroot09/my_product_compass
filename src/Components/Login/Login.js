@@ -7,7 +7,6 @@ import axios from 'axios'
 class Login extends Component {
   constructor(props){
     super(props)
-    console.log('Login props:', props)
     this.state = {
       password: '',
       username: '',
@@ -26,18 +25,19 @@ class Login extends Component {
   handleLoginFormSubmit = async (e) => {
 		e.preventDefault()
     const { username, password } = this.state
-    console.log('username:', username, 'password:', password)
 		try {
-			const res = await axios.post('/auth/login', { username, password })
+      const res = await axios.post('/auth/login', { username, password })
 			this.props.updateUsername(username)
-			this.props.updateManagerId(res.data.user_id)
-      this.props.history.push('/home')
+			this.props.updateManagerId(res.data.manager_id)
+      this.props.history.push('/')
 		} catch (err) {
 			this.setState({ username: '', password: '', loginError: true })
-		}
+    }
+    
 	}
 
   render() {
+    console.log('this.props:', this.props)
     return (
       <>
         <h3>Login</h3>
