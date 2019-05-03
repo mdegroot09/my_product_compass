@@ -8,8 +8,8 @@ class Login extends Component {
   constructor(props){
     super(props)
     this.state = {
-      password: '',
       username: '',
+      password: '',
       loginError: false,
       loginErrorMessage: 'Username or password is incorrect. Please try again.'
     }
@@ -27,9 +27,10 @@ class Login extends Component {
     const { username, password } = this.state
 		try {
       const res = await axios.post('/auth/login', { username, password })
-			this.props.updateUsername(username)
 			this.props.updateManagerId(res.data.manager_id)
+			this.props.updateUsername(username)
       this.props.history.push('/')
+      alert('You are now logged in as: ' + res.data.username)
 		} catch (err) {
 			this.setState({ username: '', password: '', loginError: true })
     }
@@ -37,7 +38,6 @@ class Login extends Component {
 	}
 
   render() {
-    console.log('this.props:', this.props)
     return (
       <>
         <h3>Login</h3>

@@ -4,6 +4,7 @@ const initialState = {
   managerfirstname: '',
   managerlastname: '', 
   email: '',
+  company: '',
   taskname: '',
   tasknotes: '',
   devfirstname: '',
@@ -17,12 +18,13 @@ const UPDATE_USERNAME = 'UPDATE_USERNAME'
 const UPDATE_MANAGERFIRSTNAME = 'UPDATE_MANAGERFIRSTNAME'
 const UPDATE_MANAGERLASTNAME = 'UPDATE_MANAGERLASTNAME'
 const UPDATE_EMAIL = 'UPDATE_EMAIL'
+const UPDATE_COMPANY = 'UPDATE_COMPANY'
 const UPDATE_TASKNAME = 'UPDATE_TASKNAME'
 const UPDATE_DEVFIRSTNAME = 'UPDATE_DEVFIRSTNAME'
 const UPDATE_DEVLASTNAME = 'UPDATE_DEVLASTNAME'
 const UPDATE_PRODUCTNAME = 'UPDATE_PRODUCTNAME'
 const UPDATE_COMPONENTNAME = 'UPDATE_COMPONENTNAME'
-const UPDATE_TASKDETAILS = 'UPDATE_TASK_DETAILS'
+const UPDATE_TASKDETAILS = 'UPDATE_TASKDETAILS'
 
 export function updateManagerId(id) {
 	return {
@@ -56,6 +58,13 @@ export function updateEmail(email) {
 	return {
 		type: UPDATE_EMAIL,
 		payload: email
+	}
+}
+
+export function updateCompany(company) {
+	return {
+		type: UPDATE_COMPANY,
+		payload: company
 	}
 }
 
@@ -114,6 +123,8 @@ export default function reducer(state = initialState, action){
       return {...state, managerlastname: payload}
     case UPDATE_EMAIL:
       return {...state, email: payload}
+    case UPDATE_COMPANY:
+      return {...state, company: payload}
     case UPDATE_TASKNAME:
       return {...state, taskname: payload}
     case UPDATE_DEVFIRSTNAME:
