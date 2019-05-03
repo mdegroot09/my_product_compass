@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import {updateManagerId, updateUsername } from '../redux/reducer'
+import {withRouter} from 'react-router-dom'
+import {updateManagerId, updateUsername} from '../redux/reducer'
 import axios from 'axios'
 
 class Login extends Component {
@@ -27,9 +27,10 @@ class Login extends Component {
     const { username, password } = this.state
 		try {
       const res = await axios.post('/auth/login', { username, password })
-			this.props.updateManagerId(res.data.manager_id)
+			this.props.updateManagerId(res.data.id)
 			this.props.updateUsername(username)
       this.props.history.push('/')
+      console.log('res.data:', res.data)
       alert('You are now logged in as: ' + res.data.username)
 		} catch (err) {
 			this.setState({ username: '', password: '', loginError: true })
@@ -38,6 +39,7 @@ class Login extends Component {
 	}
 
   render() {
+    console.log('Login this.props:', this.props)
     return (
       <>
         <h3>Login</h3>
@@ -52,9 +54,17 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = (reduxState) => {
+  const {username, manager_id} = reduxState
+  return {
+    username, 
+    manager_id
+  }
+}
+
 const mapDispatchToProps = {
   updateManagerId,
   updateUsername
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(Login))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Login))

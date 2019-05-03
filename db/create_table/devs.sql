@@ -5,5 +5,4 @@ create table devs (
   manager_id int,
   FOREIGN KEY (manager_id) REFERENCES managers (manager_id),
   product_id int,
-  FOREIGN KEY (product_id) REFERENCES products (product_id)
-)
+  FOREIGN KEY (product_id) REFERENCES products (product_id))

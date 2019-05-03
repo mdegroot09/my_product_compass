@@ -1,7 +1,20 @@
 import React, {Component} from 'react'
 import {HashRouter as Router, Link} from 'react-router-dom'
+import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom'
+import axios from 'axios'
+import {updateManagerId} from '../redux/reducer'
 
-export default class Header extends Component {
+class Header extends Component {
+
+  logout = () => {
+    console.log('logout attempt')
+    axios.get('/auth/logout').then(res => {
+      alert('You have been logged out')
+      this.props.updateManagerId('')
+    })
+  }
+
   render() {
     return(
       <div>
@@ -25,12 +38,19 @@ export default class Header extends Component {
               </Link>
             </div>
             <div className='headerRight'>
-              <Link to='/register'>
-                <button className='headerBtn'>Signup</button>
-              </Link>
-              <Link to='/login'>
-                <button className='headerBtn'>Login</button>
-              </Link>
+
+              {/* Render logout if manager_id in Redux is truthy */}
+              {this.props.manager_id ? 
+                <button onClick={() => this.logout()} className='headerBtn'>logout</button> :
+                <>
+                  <Link to='/register'>
+                    <button className='headerBtn'>Signup</button>
+                  </Link>
+                  <Link to='/login'>
+                    <button className='headerBtn'>Login</button>
+                  </Link>
+                </>
+              }
             </div>
           </Router>
         </header>
@@ -38,3 +58,16 @@ export default class Header extends Component {
     )
   }
 }
+
+let mapStateToProps = (reduxState) => {
+  const {manager_id} = reduxState
+  return {
+    manager_id
+  }
+}
+
+let mapDispatchToProps = {
+  updateManagerId
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))

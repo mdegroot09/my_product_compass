@@ -44,12 +44,11 @@ module.exports = {
       id: manager.manager_id,
       username: manager.username
     }
-    console.log('req.SESSION.user:', req.session.user)
-
     res.status(200).send(req.session.user)
   },
 
   logout: async (req, res) => {
+    console.log('You have been logged out.')
     req.session.destroy()
     res.sendStatus(200)
   }
