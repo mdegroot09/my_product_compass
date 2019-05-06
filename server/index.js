@@ -27,3 +27,5 @@ app.post('/auth/login', authCtrl.login)
 app.get('/auth/logout', authCtrl.logout)
 
 app.get('/api/tasks', auth.usersOnly, taskCtrl.getTasks)
+app.post('/api/tasks/decrement', auth.usersOnly, taskCtrl.decrementTask)
+app.post('/api/tasks/increment', auth.usersOnly, taskCtrl.incrementTask)

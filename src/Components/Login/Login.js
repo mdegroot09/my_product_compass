@@ -26,7 +26,7 @@ class Login extends Component {
 		e.preventDefault()
     const { username, password } = this.state
 		try {
-      const res = await axios.post('/auth/login', { username, password })
+      const res = await axios.post('/auth/login', {username, password})
 			this.props.updateManagerId(res.data.id)
 			this.props.updateUsername(username)
       this.props.history.push('/tasks')

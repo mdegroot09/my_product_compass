@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {HashRouter as Router, Link} from 'react-router-dom'
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
 import {updateManagerId} from '../redux/reducer'
@@ -11,6 +11,7 @@ class Header extends Component {
     axios.get('/auth/logout').then(res => {
       alert('You have been logged out')
       this.props.updateManagerId('')
+      document.location.reload()
     })
   }
 
