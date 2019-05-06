@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {updateTasks} from '../redux/reducer'
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 class Tasks extends Component {
 
@@ -16,6 +16,7 @@ class Tasks extends Component {
       }).catch(err => {
         console.log('err:', err)
       })
+      this.render()
     }
   }
 
@@ -32,13 +33,14 @@ class Tasks extends Component {
   }
 
   render() {
-    console.log('this.props:', this.props)
     // render a div for each task with its respective data
     let showTasks = this.props.tasks.map((task,i) => (
       <div className='showTask' key={i}>
           <p>Task: {task.name}</p>
           <p>Notes: {task.notes}</p>
-          <p>Developer: {task.first_name} {task.last_name}</p>
+          <Link to={`/devs/${task.dev_id}`}>
+            <button>Developer: {task.first_name} {task.last_name}</button>
+          </Link>
           <p>Due Date: {task.due_date}</p>
           <p>Requests/Tickets: 
             <button onClick={() => this.decrement(task.task_id)}>-</button>

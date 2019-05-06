@@ -11,7 +11,8 @@ const initialState = {
   devlastname: '',
   productname: '',
   componentname: '',
-  tasks: []
+	tasks: [],
+	devs: []
 }
 
 const UPDATE_MANAGER_ID = 'UPDATE_MANAGER_ID'
@@ -27,6 +28,7 @@ const UPDATE_PRODUCTNAME = 'UPDATE_PRODUCTNAME'
 const UPDATE_COMPONENTNAME = 'UPDATE_COMPONENTNAME'
 const UPDATE_TASKDETAILS = 'UPDATE_TASKDETAILS'
 const UPDATE_TASKS = 'UPDATE_TASKS'
+const UPDATE_DEVS = 'UPDATE_DEVS'
 
 export function updateManagerId(id) {
 	return {
@@ -119,6 +121,13 @@ export function updateTasks(tasks) {
 	}
 }
 
+export function updateDevs(devs) {
+	return {
+		type: UPDATE_DEVS,
+		payload: devs
+	}
+}
+
 export default function reducer(state = initialState, action){
   const {type, payload} = action
   switch (type) {
@@ -146,6 +155,8 @@ export default function reducer(state = initialState, action){
       return {...state, componentname: payload}
     case UPDATE_TASKS:
       return {...state, tasks: payload}
+    case UPDATE_DEVS:
+      return {...state, devs: payload}
     case UPDATE_TASKDETAILS:
       const {taskname, tasknotes, devfirstname, devlastname, componentname} = payload
       return {...state, taskname, tasknotes, devfirstname, devlastname, componentname}
