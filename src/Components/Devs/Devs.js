@@ -16,12 +16,11 @@ class Devs extends Component {
       }).catch(err => {
         console.log('err:', err)
       })
-      this.render()
+      // this.render()
     }
   }
   
   render() {
-    console.log('Devs this.props:', this.props)
     let showDevs = this.props.devs.map((dev, i) => (
       <div className='showDev' key={i}>
         <Link to={`/devs/${dev.dev_id}`}>
