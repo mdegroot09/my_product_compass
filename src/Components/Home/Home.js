@@ -4,7 +4,6 @@ export default class Home extends Component {
   
 
   render() {
-    console.log('HOME this.props:', this.props)
     return (
       <div className='homeMainDiv'>
         <div className='mainLogoDiv'>

@@ -8,7 +8,6 @@ import {updateManagerId} from '../redux/reducer'
 class Header extends Component {
 
   logout = () => {
-    console.log('logout attempt')
     axios.get('/auth/logout').then(res => {
       alert('You have been logged out')
       this.props.updateManagerId('')

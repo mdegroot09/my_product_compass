@@ -1,2 +1,3 @@
 select * from tasks
-where manager_id = 1 and product_id = 1;
+join devs on tasks.dev_id = devs.dev_id
+where tasks.manager_id = 1 and tasks.product_id = 1;

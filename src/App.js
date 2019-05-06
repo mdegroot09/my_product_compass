@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import './Components/Navbar/Navbar.css'
 import './Components/Home/Home.css'
+import './Components/Tasks/Tasks.css'
 import store from './Components/redux/store'
 import Header from './Components/Navbar/Navbar'
 import routes from './routes'

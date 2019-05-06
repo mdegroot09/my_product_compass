@@ -29,8 +29,7 @@ class Login extends Component {
       const res = await axios.post('/auth/login', { username, password })
 			this.props.updateManagerId(res.data.id)
 			this.props.updateUsername(username)
-      this.props.history.push('/')
-      console.log('res.data:', res.data)
+      this.props.history.push('/tasks')
       alert('You are now logged in as: ' + res.data.username)
 		} catch (err) {
 			this.setState({ username: '', password: '', loginError: true })
@@ -39,7 +38,6 @@ class Login extends Component {
 	}
 
   render() {
-    console.log('Login this.props:', this.props)
     return (
       <>
         <h3>Login</h3>
