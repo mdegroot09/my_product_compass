@@ -27,11 +27,14 @@ class Header extends Component {
               <Link to='/'>
                 <button className='headerBtn'>Home</button>
               </Link>
-              <Link to='/tasks/newtask'>
-                <button className='headerBtn'>Create</button>
+              <Link to='/products'>
+                <button className='headerBtn'>Products</button>
               </Link>
               <Link to='/tasks'>
-                <button className='headerBtn'>Manage</button>
+                <button className='headerBtn'>Tasks</button>
+              </Link>
+              <Link to='/devs'>
+                <button className='headerBtn'>Devs</button>
               </Link>
               <Link to='/about'>
                 <button className='headerBtn'>About</button>

@@ -7,6 +7,7 @@ import Dev from './Components/Dev/Dev'
 import Devs from './Components/Devs/Devs'
 import Login from './Components/Login/Login'
 import NewDev from './Components/NewDev/NewDev'
+import Products from './Components/Products/Products'
 import Register from './Components/Register/Register'
 import NewProduct from './Components/NewProduct/NewProduct'
 import NewTask from './Components/NewTask/NewTask'
@@ -27,5 +28,6 @@ export default (
     <Route path='/tasks/:task' component={Task}/>
     <Route path='/newproduct' component={NewProduct}/>
     <Route path='/about' component={About}/>
+    <Route path='/products' component={Products}/>
   </Switch>
 )

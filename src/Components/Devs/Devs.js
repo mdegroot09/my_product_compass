@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {updateDevs} from '../redux/reducer'
-import {withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 class Devs extends Component {
 
@@ -22,10 +22,21 @@ class Devs extends Component {
   
   render() {
     console.log('Devs this.props:', this.props)
-    
+    let showDevs = this.props.devs.map((dev, i) => (
+      <div className='showDev' key={i}>
+        <Link to={`/devs/${dev.dev_id}`}>
+          <button className='showDevDetail'>Developer: {dev.devfirstname} {dev.devlastname}</button>
+        </Link>
+        <p className='showDevDetail'>Title: {dev.title}</p>
+        <p className='showDevDetail'>Company: {dev.company}</p>
+        <p className='showDevDetail'>Manager: {dev.mgrfirstname} {dev.mgrlastname}</p>
+        <p className='showDevDetail'>Product Name: {dev.productname}</p>
+      </div>
+    ))
     return (
       <div>
         Devs
+        {showDevs}
       </div>
     )
   }
