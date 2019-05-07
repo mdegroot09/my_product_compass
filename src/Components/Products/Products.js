@@ -24,6 +24,15 @@ class Products extends Component {
     this.props.updateProductName(productname)
   }
 
+  deleteProduct = (product_id) => {
+    axios.delete(`/api/products/${product_id}`).then(res => {
+      this.props.updateProducts(res.data)
+      alert('You jerk.')
+    }).catch(err => {
+      console.log('err:', err)
+    })
+  }
+
   render() {
     let currentProduct = ''
     let showProducts = this.props.products.map((product, i) => {
@@ -38,6 +47,7 @@ class Products extends Component {
             <Link to={`/tasks/${product.product_id}`}>
               <button onClick={() => this.updateRedux(product.productname)}>{product.productname}</button>
             </Link>
+            <button onClick={() => this.deleteProduct(product.product_id)}>Delete</button>
             <h3>{product.taskname}</h3>
           </div>
         )

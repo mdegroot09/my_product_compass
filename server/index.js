@@ -49,3 +49,4 @@ app.get('/api/devs/:dev_id', auth.usersOnly, devCtrl.getDev)
 // productCtrl endpoints
 app.get('/api/products', auth.usersOnly, productCtrl.getProducts)
 app.post('/api/products/new', auth.usersOnly, productCtrl.newProduct)
+app.delete('/api/products/:id', auth.usersOnly, productCtrl.deleteProduct)

@@ -37,7 +37,6 @@ module.exports = {
     let manager_id = req.session.user.id
     let product_id = req.params.id
     let {task_id} = req.body
-    console.log('manager_id, product_id, task_id:', manager_id, product_id, task_id)
     let db = req.app.get('db')
     await db.delete_task({manager_id, task_id})
     let tasks = await db.get_all_tasks({manager_id, product_id})
