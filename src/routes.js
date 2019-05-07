@@ -24,8 +24,8 @@ export default (
     <Route path='/tasks/componenttree' component={ComponentTree}/>
     <Route exact path='/tasks/newtask' component={NewTask}/>
     <Route path='/tasks/:id' component={Tasks}/>
-    <Route path='/newproduct' component={NewProduct}/>
     <Route path='/about' component={About}/>
-    <Route path='/products' component={Products}/>
+    <Route exact path='/products' component={Products}/>
+    <Route path='/products/new' component={NewProduct}/>
   </Switch>
 )

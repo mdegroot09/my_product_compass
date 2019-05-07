@@ -21,9 +21,10 @@ class Products extends Component {
   }
 
   render() {
+    console.log('Products this.props:', this.props)
     let currentProduct = ''
     let showProducts = this.props.products.map((product, i) => {
-      if (currentProduct == product.product_id){
+      if (currentProduct === product.product_id){
         return(
           <h3 key={i}>{product.taskname}</h3>
         )
@@ -41,6 +42,9 @@ class Products extends Component {
     })
     return (
       <div>
+        <Link to='/products/new'>
+          <button>New Product</button>
+        </Link>
         {showProducts}
       </div>
     )

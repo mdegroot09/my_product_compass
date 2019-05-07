@@ -3,7 +3,6 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {updateDev} from '../redux/reducer'
 import {withRouter} from 'react-router-dom'
-import Products from '../Products/Products';
 
 class Dev extends Component {
   constructor(props){
@@ -31,7 +30,7 @@ class Dev extends Component {
     console.log('Dev this.props', this.props)
     let currentProduct = ''
     let devTasks = this.props.dev.map((task, i) => {
-      if (currentProduct == task.product_id){
+      if (currentProduct === task.product_id){
         return (
           <div key={i}>
             <p>Task: {task.name ? task.name : 'None'}</p>
@@ -56,7 +55,7 @@ class Dev extends Component {
       <>
         <p>Dev</p>
         <div className='devTasks'>
-          <p>Developer: {dev.devfirstname} {dev.devlastname}</p>
+          <p>Developer: {dev.first_name} {dev.last_name}</p>
           <p>Title: {dev.title}</p>
           {devTasks}
         </div>
