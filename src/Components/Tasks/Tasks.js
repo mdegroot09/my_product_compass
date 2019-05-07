@@ -41,6 +41,17 @@ class Tasks extends Component {
     )
   }
 
+  deleteTask = (task_id) => {
+    let product_id = this.props.match.params.id
+    console.log('task_id:', task_id)
+    axios.post(`/api/tasks/${product_id}`, {task_id}).then(res => {
+      this.props.updateTasks(res.data)
+      alert('You jerk.')
+    }).catch(err => {
+      console.log('err:', err)
+    })
+  }
+
   render() {
     // render a div for each task with its respective data
     let showTasks = this.props.tasks.map((task,i) => (
@@ -56,6 +67,7 @@ class Tasks extends Component {
             {task.tickets}
             <button onClick={() => this.increment(task.task_id)}>+</button>
           </p>
+          <button onClick={() => this.deleteTask(task.task_id)}>Delete</button>
       </div>
     ))
 

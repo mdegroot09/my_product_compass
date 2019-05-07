@@ -38,6 +38,7 @@ app.post('/api/tasks/new', auth.usersOnly, taskCtrl.newTask)
 app.get('/api/tasks/:product_id', auth.usersOnly, taskCtrl.getTasks)
 app.post('/api/tasks/decrement', auth.usersOnly, taskCtrl.decrementTask)
 app.post('/api/tasks/increment', auth.usersOnly, taskCtrl.incrementTask)
+app.post('/api/tasks/:id', auth.usersOnly, taskCtrl.deleteTask)
 
 // devCtrl endpoints
 app.get('/api/devs', auth.usersOnly, devCtrl.getDevs)

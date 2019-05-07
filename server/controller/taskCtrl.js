@@ -31,5 +31,16 @@ module.exports = {
     await db.new_task({manager_id, taskName, due_date, notes, dev_id, component_id, tickets, product_id})
     let tasks = await db.get_all_tasks({product_id, manager_id})
     res.status(200).send(tasks)
+  },
+
+  deleteTask: async (req, res) => {
+    let manager_id = req.session.user.id
+    let product_id = req.params.id
+    let {task_id} = req.body
+    console.log('manager_id, product_id, task_id:', manager_id, product_id, task_id)
+    let db = req.app.get('db')
+    await db.delete_task({manager_id, task_id})
+    let tasks = await db.get_all_tasks({manager_id, product_id})
+    res.status(200).send(tasks)
   }
 }
