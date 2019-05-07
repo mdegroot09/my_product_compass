@@ -19,10 +19,10 @@ export default (
     <Route path='/register' component={Register}/>
     <Route path='/login' component={Login}/>
     <Route exact path='/devs' component={Devs}/>
-    <Route path='/devs/newdev' component={NewDev}/>
+    <Route path='/devs/new' component={NewDev}/>
     <Route path='/devs/:id' component={Dev}/>
     <Route path='/tasks/componenttree' component={ComponentTree}/>
-    <Route exact path='/tasks/new' component={NewTask}/>
+    <Route path='/tasks/new' component={NewTask}/>
     <Route path='/tasks/:id' component={Tasks}/>
     <Route path='/about' component={About}/>
     <Route exact path='/products' component={Products}/>

@@ -42,15 +42,14 @@ class NewTask extends Component {
         console.log('NewProduct res.data:', res.data)
         this.props.updateProducts(res.data)
         this.props.history.push(`/tasks/${this.props.productid}`)
-        alert(`New product '${taskName}' created under manager '${this.props.productname}'.`)
+        alert(`New task '${taskName}' created under project '${this.props.productname}'.`)
       })
 		} catch (err) {
-			this.setState({ username: '', password: '', newTaskError: true })
+			this.setState({taskname: '', due_date: '', notes: '', dev_id: 0, component_id: 0, tickets: 0, newTaskError: true})
     }
 	}
 
   render() {
-    console.log('NewTask this.props:', this.props)
     return (
       <>
         <h3>{this.props.productname}</h3>

@@ -34,7 +34,9 @@ class Devs extends Component {
     ))
     return (
       <div>
-        Devs
+        <Link to='/devs/new'>
+          <button>New Developer</button>
+        </Link>
         {showDevs}
       </div>
     )

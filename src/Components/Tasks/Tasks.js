@@ -73,7 +73,7 @@ class Tasks extends Component {
 }
 
 let mapStateToProps = (reduxState) => {
-  const {tasks, manager_id, productname, productid} = reduxState
+  const {tasks, manager_id, productid} = reduxState
   return {
     tasks,
     manager_id,

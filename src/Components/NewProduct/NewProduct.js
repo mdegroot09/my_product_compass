@@ -40,7 +40,7 @@ class NewProduct extends Component {
         alert(`New product '${productName}' created under manager '${username}'.`)
       })
 		} catch (err) {
-			this.setState({ username: '', password: '', newProductError: true })
+			this.setState({productName: '', newProductError: true})
     }
 	}
 

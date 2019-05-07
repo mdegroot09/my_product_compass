@@ -41,6 +41,7 @@ app.post('/api/tasks/increment', auth.usersOnly, taskCtrl.incrementTask)
 
 // devCtrl endpoints
 app.get('/api/devs', auth.usersOnly, devCtrl.getDevs)
+app.post('/api/devs/new', auth.usersOnly, devCtrl.newDev)
 app.get('/api/devs/:dev_id', auth.usersOnly, devCtrl.getDev)
 
 // productCtrl endpoints

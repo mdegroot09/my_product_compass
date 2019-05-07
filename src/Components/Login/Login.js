@@ -43,7 +43,7 @@ class Login extends Component {
         <h3>Login</h3>
         <form onSubmit={this.handleLoginFormSubmit}>
           <input onChange={(e) => this.handleChange(e)} name='username' placeholder='username' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} name='password' placeholder='password' type="password"/>
+          <input onChange={(e) => this.handleChange(e)} name='password' placeholder='password' type="password" autoComplete='cc-number'/>
           <button>log in</button>
         </form>
         {this.state.loginError && <h3>{this.state.loginErrorMessage}</h3>}
