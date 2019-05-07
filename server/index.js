@@ -34,7 +34,8 @@ app.post('/auth/login', authCtrl.login)
 app.get('/auth/logout', authCtrl.logout)
 
 // taskCtrl endpoints
-app.get('/api/tasks/:dev_id', auth.usersOnly, taskCtrl.getTasks)
+app.post('/api/tasks/new', auth.usersOnly, taskCtrl.newTask)
+app.get('/api/tasks/:product_id', auth.usersOnly, taskCtrl.getTasks)
 app.post('/api/tasks/decrement', auth.usersOnly, taskCtrl.decrementTask)
 app.post('/api/tasks/increment', auth.usersOnly, taskCtrl.incrementTask)
 

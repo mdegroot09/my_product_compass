@@ -10,6 +10,7 @@ const initialState = {
   devfirstname: '',
   devlastname: '',
   productname: '',
+  productid: 0,
   componentname: '',
 	tasks: [],
 	devs: [],
@@ -32,6 +33,7 @@ const UPDATE_TASKNAME = 'UPDATE_TASKNAME'
 const UPDATE_DEVFIRSTNAME = 'UPDATE_DEVFIRSTNAME'
 const UPDATE_DEVLASTNAME = 'UPDATE_DEVLASTNAME'
 const UPDATE_PRODUCTNAME = 'UPDATE_PRODUCTNAME'
+const UPDATE_PRODUCTID = 'UPDATE_PRODUCTID'
 const UPDATE_COMPONENTNAME = 'UPDATE_COMPONENTNAME'
 const UPDATE_TASKDETAILS = 'UPDATE_TASKDETAILS'
 const UPDATE_TASKS = 'UPDATE_TASKS'
@@ -109,6 +111,13 @@ export function updateProductName(productname) {
 	}
 }
 
+export function updateProductId(productid) {
+	return {
+		type: UPDATE_PRODUCTID,
+		payload: productid
+	}
+}
+
 export function updateComponentName(componentname) {
 	return {
 		type: UPDATE_COMPONENTNAME,
@@ -174,6 +183,8 @@ export default function reducer(state = initialState, action){
       return {...state, devlastname: payload}
     case UPDATE_PRODUCTNAME:
       return {...state, productname: payload}
+    case UPDATE_PRODUCTID:
+      return {...state, productid: payload}
     case UPDATE_COMPONENTNAME:
       return {...state, componentname: payload}
     case UPDATE_TASKS:

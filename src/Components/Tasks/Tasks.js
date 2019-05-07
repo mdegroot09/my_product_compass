@@ -1,19 +1,26 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import {updateTasks} from '../redux/reducer'
+import {updateTasks, updateProductId} from '../redux/reducer'
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom'
 
-class Tasks extends Component {
+class Tasks extends Component { 
+  constructor(props){
+    super(props)
+    this.state = {
+      productName: ''
+    }
+  }
 
   componentWillMount(){
     // if not logged in, reroute to login screen, otherwise render axios call
     if (!this.props.manager_id){
       this.props.history.push('/login')
     } else {
-      let dev_id = this.props.match.params.id
-      axios.get(`/api/tasks/${dev_id}`).then(res => {
+      let product_id = this.props.match.params.id
+      axios.get(`/api/tasks/${product_id}`).then(res => {
         this.props.updateTasks(res.data)
+        this.props.updateProductId(product_id)
       }).catch(err => {
         console.log('err:', err)
       })
@@ -56,7 +63,9 @@ class Tasks extends Component {
     let showTasksSorted = showTasks.sort((a,b) => a.tickets - b.tickets)
     return (
       <div>
-        Tasks
+        <Link to='/tasks/new'>
+          <button>New Task</button>
+        </Link>
         {showTasksSorted}
       </div>
     )
@@ -64,15 +73,17 @@ class Tasks extends Component {
 }
 
 let mapStateToProps = (reduxState) => {
-  const {tasks, manager_id} = reduxState
+  const {tasks, manager_id, productname, productid} = reduxState
   return {
     tasks,
-    manager_id
+    manager_id,
+    productid
   }
 }
 
 let mapDispatchToProps = {
-  updateTasks
+  updateTasks,
+  updateProductId
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Tasks))

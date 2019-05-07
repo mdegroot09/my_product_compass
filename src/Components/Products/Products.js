@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import {updateProducts} from '../redux/reducer'
+import {updateProducts, updateProductName} from '../redux/reducer'
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom'
 
@@ -20,6 +20,10 @@ class Products extends Component {
     }
   }
 
+  updateRedux = (productname) => {
+    this.props.updateProductName(productname)
+  }
+
   render() {
     console.log('Products this.props:', this.props)
     let currentProduct = ''
@@ -33,7 +37,7 @@ class Products extends Component {
         return (
           <div key={i}>
             <Link to={`/tasks/${product.product_id}`}>
-              <button>{product.productname}</button>
+              <button onClick={() => this.updateRedux(product.productname)}>{product.productname}</button>
             </Link>
             <h3>{product.taskname}</h3>
           </div>
@@ -60,7 +64,8 @@ let mapStateToProps = (reduxState) => {
 }
 
 let mapDispatchToProps = {
-  updateProducts
+  updateProducts,
+  updateProductName
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Products))
