@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {updateDev} from '../redux/reducer'
+import {updateDev, updateDevs} from '../redux/reducer'
 import {withRouter} from 'react-router-dom'
 
 class Dev extends Component {
@@ -24,6 +24,16 @@ class Dev extends Component {
         console.log('err:', err)
       })
     }
+  }
+
+  deleteDev = (dev_id) => {
+    axios.delete(`/api/devs/${dev_id}`).then(res => {
+      this.props.updateDevs(res.data)
+      alert('You jerk.')
+      this.props.history.push('/devs')
+    }).catch(err => {
+      console.log('err:', err)
+    })
   }
   
   render() {
@@ -51,6 +61,7 @@ class Dev extends Component {
       }
     })
     let dev = this.props.dev[0]
+    let dev_id = this.props.match.params.id
     return (
       <>
         <p>Dev</p>
@@ -58,6 +69,7 @@ class Dev extends Component {
           <p>Developer: {dev.first_name} {dev.last_name}</p>
           <p>Title: {dev.title}</p>
           {devTasks}
+          <button onClick={() => this.deleteDev(dev_id)}>Delete</button>
         </div>
       </>
     )
@@ -73,7 +85,8 @@ let mapStateToProps = (reduxState) => {
 }
 
 let mapDispatchToProps = {
-  updateDev
+  updateDev,
+  updateDevs
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Dev))
