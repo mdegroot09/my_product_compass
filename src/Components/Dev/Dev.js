@@ -41,7 +41,7 @@ class Dev extends Component {
       <>
         <p>Dev</p>
         <div className='devTasks'>
-          <p>Developer: {dev.first_name} {dev.last_name}</p>
+          <p>Developer: {dev.devfirstname} {dev.devlastname}</p>
           <p>Title: {dev.title}</p>
           {devTasks}
         </div>

@@ -9,7 +9,6 @@ module.exports = {
   getDev: async (req, res) => {
     let manager_id = req.session.user.id
     let {dev_id} = req.params
-    console.log('params dev_id:', dev_id)
     let db = req.app.get('db')
     let dev = await db.get_dev({dev_id, manager_id})
     if (dev.length < 1){
