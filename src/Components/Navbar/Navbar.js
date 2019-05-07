@@ -30,9 +30,6 @@ class Header extends Component {
               <Link to='/products'>
                 <button className='headerBtn'>Products</button>
               </Link>
-              <Link to='/tasks'>
-                <button className='headerBtn'>Tasks</button>
-              </Link>
               <Link to='/devs'>
                 <button className='headerBtn'>Devs</button>
               </Link>

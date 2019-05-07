@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 export default class Home extends Component {
   
-
   render() {
     return (
       <div className='homeMainDiv'>
@@ -31,7 +31,9 @@ export default class Home extends Component {
               <h1 className='homeTitle'>s</h1>
             </div>
           </div>
-          <button className='getStarted'>get started</button>
+          <Link to='/products'>
+            <button className='getStarted'>get started</button>
+          </Link>
         </div>
       </div>
     )

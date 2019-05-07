@@ -22,7 +22,8 @@ class Tasks extends Component {
   }
 
   decrement(task_id){
-    axios.post(`/api/tasks/decrement`, {task_id}).then(
+    let product_id = this.props.match.params.id
+    axios.post(`/api/tasks/decrement`, {task_id, product_id}).then(
       this.componentWillMount()
     )
   }

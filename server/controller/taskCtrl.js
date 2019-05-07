@@ -8,16 +8,18 @@ module.exports = {
   },
 
   decrementTask: async (req, res) => {
+    let manager_id = req.session.user.id
+    let {task_id, product_id} = req.body
     let db = req.app.get('db')
-    let {task_id} = req.body
-    let tasks = await db.decrement_task({task_id})
+    let tasks = await db.decrement_task({task_id, manager_id, product_id})
     res.status(200).send(tasks)
   },
 
   incrementTask: async (req, res) => {
+    let manager_id = req.session.user.id
+    let {task_id, product_id} = req.body
     let db = req.app.get('db')
-    let {task_id} = req.body
-    let tasks = await db.increment_task({task_id})
+    let tasks = await db.increment_task({task_id, manager_id, product_id})
     res.status(200).send(tasks)
   }
 }
