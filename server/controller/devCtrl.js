@@ -21,10 +21,17 @@ module.exports = {
     let manager_id = req.session.user.id
     let {first_name, last_name, title} = req.body
     let db = req.app.get('db')
-    console.log('newDev req.body:', req.body)
     await db.new_dev({first_name, last_name, title, manager_id})
     let devs = await db.get_all_devs({manager_id})
-    console.log('newDev res.send:', devs)
+    res.status(200).send(devs)
+  },
+
+  deleteDev: async (req, res) => {
+    let manager_id = req.session.user.id
+    let dev_id = req.params.id
+    let db = req.app.get('db')
+    await db.delete_dev({manager_id, dev_id})
+    let devs = await db.get_all_devs({manager_id})
     res.status(200).send(devs)
   }
 }

@@ -16,8 +16,16 @@ class Devs extends Component {
       }).catch(err => {
         console.log('err:', err)
       })
-      // this.render()
     }
+  }
+
+  deleteDev = (id) => {
+    axios.delete(`/api/devs/${id}`).then(res => {
+      this.props.updateDevs(res.data)
+      alert('You jerk.')
+    }).catch(err => {
+      console.log('err:', err)
+    })
   }
   
   render() {
@@ -30,6 +38,7 @@ class Devs extends Component {
         <p className='showDevDetail'>Company: {dev.company}</p>
         <p className='showDevDetail'>Manager: {dev.mgrfirstname} {dev.mgrlastname}</p>
         <p className='showDevDetail'>Product Name: {dev.productname}</p>
+        <button onClick={() => this.deleteDev(dev.dev_id)}>Delete</button>
       </div>
     ))
     return (
