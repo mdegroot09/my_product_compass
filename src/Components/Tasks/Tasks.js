@@ -11,7 +11,8 @@ class Tasks extends Component {
     if (!this.props.manager_id){
       this.props.history.push('/login')
     } else {
-      axios.get('/api/tasks').then(res => {
+      let dev_id = this.props.match.params.id
+      axios.get(`/api/tasks/${dev_id}`).then(res => {
         this.props.updateTasks(res.data)
       }).catch(err => {
         console.log('err:', err)

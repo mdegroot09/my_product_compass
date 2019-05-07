@@ -11,7 +11,6 @@ import Products from './Components/Products/Products'
 import Register from './Components/Register/Register'
 import NewProduct from './Components/NewProduct/NewProduct'
 import NewTask from './Components/NewTask/NewTask'
-import Task from './Components/Task/Task'
 import Tasks from './Components/Tasks/Tasks'
 
 export default (
@@ -22,10 +21,9 @@ export default (
     <Route exact path='/devs' component={Devs}/>
     <Route path='/devs/newdev' component={NewDev}/>
     <Route path='/devs/:id' component={Dev}/>
-    <Route exact path='/tasks' component={Tasks}/>
     <Route path='/tasks/componenttree' component={ComponentTree}/>
     <Route exact path='/tasks/newtask' component={NewTask}/>
-    <Route path='/tasks/:task' component={Task}/>
+    <Route path='/tasks/:id' component={Tasks}/>
     <Route path='/newproduct' component={NewProduct}/>
     <Route path='/about' component={About}/>
     <Route path='/products' component={Products}/>

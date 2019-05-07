@@ -1,7 +1,9 @@
 module.exports = {
   getTasks: async (req, res) => {
+    let manager_id = req.session.user.id
+    let {dev_id} = req.params
     let db = req.app.get('db')
-    let tasks = await db.get_all_tasks()
+    let tasks = await db.get_all_tasks({dev_id, manager_id})
     res.status(200).send(tasks)
   },
 

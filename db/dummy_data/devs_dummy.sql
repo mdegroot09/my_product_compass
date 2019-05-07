@@ -4,27 +4,32 @@ insert into devs (
   first_name,
   last_name,
   manager_id,
-  product_id
+  product_id,
+  title
 ) values (
   'Chase',
   'Bossman',
-  1,
-  1
+  6,
+  2,
+  'Team Lead'
 ), (
   'Brad',
   'Master',
-  1,
-  1
+  6,
+  2,
+  'Senior Dev'
 ), (
   'Princeton',
   'Frontman',
-  1,
-  1
+  6,
+  2,
+  'Junior Dev'
 ), (
   'Nick',
   'Newbie',
-  1,
-  1
+  6,
+  2,
+  'Junior Dev'
 );
 
 select * from devs;

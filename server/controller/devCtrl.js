@@ -1,5 +1,5 @@
 module.exports = {
-  getAllDevs: async (req, res) => {
+  getDevs: async (req, res) => {
     let db = req.app.get('db')
     let devs = await db.get_all_devs()
     res.status(200).send(devs)

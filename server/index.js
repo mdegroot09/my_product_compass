@@ -5,17 +5,22 @@ const session = require('express-session')
 const massive = require('massive')
 const taskCtrl = require('./controller/taskCtrl')
 const devCtrl = require('./controller/devCtrl')
+const productCtrl = require('./controller/productCtrl')
 const authCtrl = require('./controller/authCtrl')
 const auth = require('./middleware/authMiddleware')
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 
+// get access to req.body in controllers
 app.use(express.json())
+
+// Initiate user session
 app.use(session({
   secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: false
 }))
 
+// Connect server to database
 massive(CONNECTION_STRING).then(db => {
   app.set('db', db)
   app.listen(SERVER_PORT, () => {
@@ -23,13 +28,19 @@ massive(CONNECTION_STRING).then(db => {
   })
 })
 
+// Credentials endpoints
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.get('/auth/logout', authCtrl.logout)
 
-app.get('/api/tasks', auth.usersOnly, taskCtrl.getTasks)
+// taskCtrl endpoints
+app.get('/api/tasks/:dev_id', auth.usersOnly, taskCtrl.getTasks)
 app.post('/api/tasks/decrement', auth.usersOnly, taskCtrl.decrementTask)
 app.post('/api/tasks/increment', auth.usersOnly, taskCtrl.incrementTask)
 
-app.get('/api/devs', auth.usersOnly, devCtrl.getAllDevs)
+// devCtrl endpoints
+app.get('/api/devs', auth.usersOnly, devCtrl.getDevs)
 app.get('/api/devs/:dev_id', auth.usersOnly, devCtrl.getDev)
+
+// productCtrl endpoints
+app.get('/api/products', auth.usersOnly, productCtrl.getProducts)
