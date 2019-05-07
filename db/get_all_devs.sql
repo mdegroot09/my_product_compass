@@ -2,4 +2,4 @@ select devs.dev_id, devs.first_name as devFirstName, devs.last_name as devLastNa
 from devs
 join managers on managers.manager_id = devs.manager_id
 join products on products.product_id = devs.product_id
-where manager_id = ${manager_id};
+where managers.manager_id = ${manager_id};
