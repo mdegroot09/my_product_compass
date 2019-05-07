@@ -21,7 +21,6 @@ class Products extends Component {
   }
 
   render() {
-    let productNameCheck = ''
     let currentProduct = ''
     let showProducts = this.props.products.map((product, i) => {
       if (currentProduct == product.product_id){
