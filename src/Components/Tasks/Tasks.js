@@ -53,6 +53,7 @@ class Tasks extends Component {
   }
 
   render() {
+    console.log('Tasks this.props:', this.props)
     // render a div for each task with its respective data
     let showTasks = this.props.tasks.map((task,i) => (
       <div className='showTask' key={i}>
@@ -68,6 +69,9 @@ class Tasks extends Component {
             <button onClick={() => this.increment(task.task_id)}>+</button>
           </p>
           <button onClick={() => this.deleteTask(task.task_id)}>Delete</button>
+          <Link to={`/tasks/update/${task.task_id}`}>
+            <button>Edit</button>
+          </Link>
       </div>
     ))
 

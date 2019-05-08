@@ -1,78 +1,83 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {updateDev} from '../redux/reducer'
+import {updateTasks} from '../redux/reducer'
 import axios from 'axios'
 
 class UpdateTask extends Component {
   constructor(props){
     super(props)
-    console.log(this.props)
     this.state = {
-      first_name: '',
-      last_name: '',
-      title: '',
-      updateDevError: false,
-      updateDevErrorMessage: 'Something went wrong. Please try again.'
+      taskName: '',
+      notes: '',
+      dev_id: 0,
+      component_id: 0,
+      tickets: 0,
+      updateTaskError: false,
+      updateTaskErrorMessage: 'Something went wrong. Please try again.'
     }
   }
 
   componentWillMount = async () => {
-    // if not logged in, reroute to login screen
+    // if not logged in, reroute to login screen, otherwise render axios call
     if (!this.props.manager_id){
       this.props.history.push('/login')
     } else {
-      try {
-        let dev_id = this.props.match.params.id
-        let res = await axios.get(`/api/devs/${dev_id}`)
-        await this.props.updateDev(res.data)
-        let {first_name, last_name, title} = this.props.dev[0]
-        this.setState({first_name, last_name, title})
-      } catch {
-        console.log('Something went wrong.')
-      }
+      let task_id = this.props.match.params.id
+      axios.get(`/api/tasks/update/${task_id}`).then(res => {
+        let {component_id, dev_id, notes, name, tickets} = res.data[0]
+        this.setState({taskName: name, notes, dev_id, tickets, component_id})
+        alert('Yay.')
+      }).catch(err => {
+        console.log('err:', err)
+      })
     }
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
-      registerError: false
+      updateTaskError: false
     })
   }
 
   handleLoginFormSubmit = (e) => {
 		e.preventDefault()
-    const {first_name, last_name, title} = this.state
-    let dev_id = this.props.match.params.id
+    const {notes, dev_id, tickets, component_id} = this.state
+    const name = this.state.taskName
+    let task_id = this.props.match.params.id
 		try {
-      axios.put('/api/devs/update', {first_name, last_name, title, dev_id}).then(res => {
+      axios.put(`/api/tasks/update`, {task_id, name, notes, dev_id, component_id, tickets}).then(res => {
+        this.props.updateTasks(res.data)
         console.log('it worked')
         this.props.updateDev(res.data)
-        this.props.history.push('/devs')
-        alert(`Developer '${first_name} ${last_name}' updated under manager '${this.props.username}'.`)
+        this.props.history.push('/tasks')
+        alert(`Task '${name}' updated under manager '${this.props.username}'.`)
       })
 		} catch (err) {
       console.log('it didnt work')
-			this.setState({first_name: '', last_name: '', title: '', updateDevError: true})
+			this.setState({first_name: '', last_name: '', title: '', updateTaskError: true})
     }
   }
 
   render() {
-    console.log('UpdateDev this.state:', this.state)
+    console.log('UpdateTask this.state:', this.state)
+    console.log('UpdateTask this.props:', this.props)
     return (
       <>
         <h4>Update Task</h4>
         <form onSubmit={this.handleLoginFormSubmit}>
-          <input onChange={(e) => this.handleChange(e)} value={this.state.first_name} name='first_name' placeholder='first name' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} value={this.state.last_name} name='last_name' placeholder='last name' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} value={this.state.title} name='title' placeholder='title' type="text"/>
+          <input onChange={(e) => this.handleChange(e)} value={this.state.taskName} name='taskName' placeholder='task name' type="text"/>
+          <input onChange={(e) => this.handleChange(e)} value={this.state.notes} name='notes' placeholder='notes' type="text"/>
+          <input onChange={(e) => this.handleChange(e)} value={this.state.dev_id} name='dev_id' placeholder='dev id' type="text"/>
+          <input onChange={(e) => this.handleChange(e)} value={this.state.component_id} name='component_id' placeholder='component id' type="text"/>
+          <input onChange={(e) => this.handleChange(e)} value={this.state.tickets} name='tickets' placeholder='tickets' type="text"/>
           <button onClick={this.handleLoginFormSubmit}>update</button>
-          <Link to='/devs'>
+          <Link to='/tasks'>
             <button>cancel</button>
           </Link>
         </form>
-        {this.state.updateDevError && <h3>{this.state.updateDevErrorMessage}</h3>}
+        {this.state.updateTaskError && <h3>{this.state.updateTaskErrorMessage}</h3>}
       </>
     )
     
@@ -80,16 +85,19 @@ class UpdateTask extends Component {
 }
 
 const mapStateToProps = (reduxState) => {
-  const {manager_id, username, dev} = reduxState
+  const {manager_id, username, dev, tasks} = reduxState
+  const product_id = reduxState.productid
   return {
     manager_id,
     username,
-    dev
+    dev,
+    product_id,
+    tasks
   }
 }
 
 const mapDispatchToProps = {
-  updateDev
+  updateTasks
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateTask))

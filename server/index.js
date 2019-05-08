@@ -29,13 +29,14 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 // Credentials endpoints
+app.get('/auth/logout', authCtrl.logout)
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
-app.get('/auth/logout', authCtrl.logout)
 
 // taskCtrl endpoints
-app.post('/api/tasks/new', auth.usersOnly, taskCtrl.newTask)
 app.get('/api/tasks/:product_id', auth.usersOnly, taskCtrl.getTasks)
+app.get('/api/tasks/update/:task_id', auth.usersOnly, taskCtrl.getTask)
+app.post('/api/tasks/new', auth.usersOnly, taskCtrl.newTask)
 app.post('/api/tasks/decrement', auth.usersOnly, taskCtrl.decrementTask)
 app.post('/api/tasks/increment', auth.usersOnly, taskCtrl.incrementTask)
 app.post('/api/tasks/:id', auth.usersOnly, taskCtrl.deleteTask)
@@ -43,10 +44,10 @@ app.put('/api/tasks/update', auth.usersOnly, taskCtrl.updateTask)
 
 // devCtrl endpoints
 app.get('/api/devs', auth.usersOnly, devCtrl.getDevs)
-app.delete('/api/devs/:id', auth.usersOnly, devCtrl.deleteDev)
-app.post('/api/devs/new', auth.usersOnly, devCtrl.newDev)
 app.get('/api/devs/:dev_id', auth.usersOnly, devCtrl.getDev)
+app.post('/api/devs/new', auth.usersOnly, devCtrl.newDev)
 app.put('/api/devs/update', auth.usersOnly, devCtrl.updateDev)
+app.delete('/api/devs/:id', auth.usersOnly, devCtrl.deleteDev)
 
 // productCtrl endpoints
 app.get('/api/products', auth.usersOnly, productCtrl.getProducts)

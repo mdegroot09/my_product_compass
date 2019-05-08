@@ -50,5 +50,13 @@ module.exports = {
     await db.update_task({task_id, name, notes, dev_id, component_id, tickets, manager_id})
     let tasks = await db.get_all_tasks({product_id, manager_id})
     res.status(200).send(tasks)
+  },
+
+  getTask: async (req, res) => {
+    let manager_id = req.session.user.id
+    let {task_id} = req.params
+    let db = req.app.get('db')
+    let task = await db.get_task({task_id, manager_id})
+    res.status(200).send(task)
   }
 }
