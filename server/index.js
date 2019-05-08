@@ -45,6 +45,7 @@ app.get('/api/devs', auth.usersOnly, devCtrl.getDevs)
 app.delete('/api/devs/:id', auth.usersOnly, devCtrl.deleteDev)
 app.post('/api/devs/new', auth.usersOnly, devCtrl.newDev)
 app.get('/api/devs/:dev_id', auth.usersOnly, devCtrl.getDev)
+app.put('/api/devs/update', auth.usersOnly, devCtrl.updateDev)
 
 // productCtrl endpoints
 app.get('/api/products', auth.usersOnly, productCtrl.getProducts)

@@ -33,5 +33,17 @@ module.exports = {
     await db.delete_dev({manager_id, dev_id})
     let devs = await db.get_all_devs({manager_id})
     res.status(200).send(devs)
+  },
+
+  updateDev: async (req, res) => {
+    let manager_id = req.session.user.id
+    let {first_name, last_name, title, dev_id} = req.body
+    let db = req.app.get('db')
+    await db.update_dev({first_name, last_name, title, dev_id})
+    let dev = await db.get_dev({dev_id, manager_id})
+    if (dev.length < 1){
+      dev = await db.get_dev_simple({dev_id, manager_id})
+    }
+    res.status(200).send(dev)
   }
 }

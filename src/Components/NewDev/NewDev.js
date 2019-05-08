@@ -50,7 +50,7 @@ class NewDev extends Component {
         <h4>New Dev</h4>
         <form onSubmit={this.handleLoginFormSubmit}>
           <input onChange={(e) => this.handleChange(e)} name='first_name' placeholder='first name' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} name='last_name' placeholder='last date' type="text"/>
+          <input onChange={(e) => this.handleChange(e)} name='last_name' placeholder='last name' type="text"/>
           <input onChange={(e) => this.handleChange(e)} name='title' placeholder='title' type="text"/>
           <button>create</button>
         </form>

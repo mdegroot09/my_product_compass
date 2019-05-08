@@ -17,7 +17,8 @@ const initialState = {
 	dev: [
 		{
 			firstname: '',
-			lastname: ''
+			last_name: '',
+			title: ''
 		}
 	],
 	products: []

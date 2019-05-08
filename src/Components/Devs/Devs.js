@@ -39,6 +39,9 @@ class Devs extends Component {
         <p className='showDevDetail'>Manager: {dev.mgrfirstname} {dev.mgrlastname}</p>
         <p className='showDevDetail'>Product Name: {dev.productname}</p>
         <button onClick={() => this.deleteDev(dev.dev_id)}>Delete</button>
+        <Link to={`/devs/update/${dev.dev_id}`}>
+          <button>Edit</button>
+        </Link>
       </div>
     ))
     return (
