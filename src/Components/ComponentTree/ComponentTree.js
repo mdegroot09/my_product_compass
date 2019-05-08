@@ -61,14 +61,25 @@ class ComponentTree extends Component {
     this.setState({treeData: components})
   }
 
+  updateParentId = (e) => {
+    console.log('e:', e)
+    let parent_component = e.nextParentNode.component_id
+    let product_id = this.props.match.params.id
+    let {component_id} = e.node
+    axios.put(`/api/components/update/${product_id}`, {component_id, parent_component}).then(res => {
+      console.log('You did it')
+    }).catch(err => console.log('Something went wrong.'))
+  }
+
   render() {
-    // console.log('ComponentTree this.state:', this.state)
-    // console.log('ComponentTree this.props:', this.props)
+    console.log('ComponentTree this.state:', this.state)
+    console.log('ComponentTree this.props:', this.props)
     return (
-      <div className='componentTree' style={{ height: 400 }}>
+      <div className='componentTree'>
         <SortableTree
           treeData={this.state.treeData}
           onChange={treeData => this.setState({ treeData })}
+          onMoveNode={(e) => this.updateParentId(e)}
         />
       </div>
     );

@@ -33,9 +33,6 @@ class Header extends Component {
               <Link to='/devs'>
                 <button className='headerBtn'>Devs</button>
               </Link>
-              <Link to='/tasks/componenttree'>
-                <button className='headerBtn'>MyTree</button>
-              </Link>
               <Link to='/about'>
                 <button className='headerBtn'>About</button>
               </Link>

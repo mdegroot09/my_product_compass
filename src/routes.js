@@ -15,6 +15,7 @@ import Tasks from './Components/Tasks/Tasks'
 import UpdateDev from './Components/UpdateDev/UpdateDev'
 import UpdateTask from './Components/UpdateTask/UpdateTask'
 import UpdateProduct from './Components/UpdateProduct/UpdateProduct'
+import IncorrectRoute from './Components/IncorrectRoute/IncorrectRoute'
 
 export default (
   <Switch>
@@ -33,5 +34,6 @@ export default (
     <Route exact path='/products' component={Products}/>
     <Route path='/products/new' component={NewProduct}/>
     <Route path='/products/update/:id' component={UpdateProduct}/>
+    <Route path='/' component={IncorrectRoute}/>
   </Switch>
 )
