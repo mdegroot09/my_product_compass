@@ -12,7 +12,8 @@ import Register from './Components/Register/Register'
 import NewProduct from './Components/NewProduct/NewProduct'
 import NewTask from './Components/NewTask/NewTask'
 import Tasks from './Components/Tasks/Tasks'
-import UpdateDev from './Components/UpdateDev/UpdateDev';
+import UpdateDev from './Components/UpdateDev/UpdateDev'
+import UpdateTask from './Components/UpdateTask/UpdateTask'
 
 export default (
   <Switch>
@@ -25,6 +26,7 @@ export default (
     <Route path='/devs/:id' component={Dev}/>
     <Route path='/tasks/componenttree' component={ComponentTree}/>
     <Route path='/tasks/new' component={NewTask}/>
+    <Route path='/tasks/update/:id' component={UpdateTask}/>
     <Route path='/tasks/:id' component={Tasks}/>
     <Route path='/about' component={About}/>
     <Route exact path='/products' component={Products}/>
