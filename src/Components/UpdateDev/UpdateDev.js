@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {updateDev} from '../redux/reducer'
 import axios from 'axios'
 
@@ -56,8 +56,7 @@ class UpdateDev extends Component {
       console.log('it didnt work')
 			this.setState({first_name: '', last_name: '', title: '', updateDevError: true})
     }
-	}
-
+  }
 
   render() {
     console.log('UpdateDev this.state:', this.state)
@@ -69,6 +68,9 @@ class UpdateDev extends Component {
           <input onChange={(e) => this.handleChange(e)} value={this.state.last_name} name='last_name' placeholder='last name' type="text"/>
           <input onChange={(e) => this.handleChange(e)} value={this.state.title} name='title' placeholder='title' type="text"/>
           <button onClick={this.handleLoginFormSubmit}>update</button>
+          <Link to='/devs'>
+            <button>cancel</button>
+          </Link>
         </form>
         {this.state.updateDevError && <h3>{this.state.updateDevErrorMessage}</h3>}
       </>

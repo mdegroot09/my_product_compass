@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {updateDev, updateDevs} from '../redux/reducer'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 class Dev extends Component {
   constructor(props){
@@ -70,6 +70,9 @@ class Dev extends Component {
           <p>Title: {dev.title}</p>
           {devTasks}
           <button onClick={() => this.deleteDev(dev_id)}>Delete</button>
+          <Link to={`/devs/update/${dev.dev_id}`}>
+            <button>Edit</button>
+          </Link>
         </div>
       </>
     )
