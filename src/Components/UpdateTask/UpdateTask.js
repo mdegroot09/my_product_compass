@@ -27,7 +27,6 @@ class UpdateTask extends Component {
       axios.get(`/api/tasks/update/${task_id}`).then(res => {
         let {component_id, dev_id, notes, name, tickets} = res.data[0]
         this.setState({taskName: name, notes, dev_id, tickets, component_id})
-        alert('Yay.')
       }).catch(err => {
         console.log('err:', err)
       })
@@ -50,7 +49,6 @@ class UpdateTask extends Component {
       axios.put(`/api/tasks/update`, {task_id, name, notes, dev_id, component_id, tickets}).then(res => {
         this.props.updateTasks(res.data)
         console.log('it worked')
-        this.props.updateDev(res.data)
         this.props.history.push('/tasks')
         alert(`Task '${name}' updated under manager '${this.props.username}'.`)
       })
@@ -69,8 +67,8 @@ class UpdateTask extends Component {
         <form onSubmit={this.handleLoginFormSubmit}>
           <input onChange={(e) => this.handleChange(e)} value={this.state.taskName} name='taskName' placeholder='task name' type="text"/>
           <input onChange={(e) => this.handleChange(e)} value={this.state.notes} name='notes' placeholder='notes' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} value={this.state.dev_id} name='dev_id' placeholder='dev id' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} value={this.state.component_id} name='component_id' placeholder='component id' type="text"/>
+          <input onChange={(e) => this.handleChange(e)} value={this.state.dev_id ? this.state.dev_id : ''} name='dev_id' placeholder='dev id' type="text"/>
+          <input onChange={(e) => this.handleChange(e)} value={this.state.component_id ? this.state.component_id : ''} name='component_id' placeholder='component id' type="text"/>
           <input onChange={(e) => this.handleChange(e)} value={this.state.tickets} name='tickets' placeholder='tickets' type="text"/>
           <button onClick={this.handleLoginFormSubmit}>update</button>
           <Link to='/tasks'>
