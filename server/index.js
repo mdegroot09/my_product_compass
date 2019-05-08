@@ -40,7 +40,7 @@ app.post('/api/tasks/new', auth.usersOnly, taskCtrl.newTask)
 app.post('/api/tasks/decrement', auth.usersOnly, taskCtrl.decrementTask)
 app.post('/api/tasks/increment', auth.usersOnly, taskCtrl.incrementTask)
 app.post('/api/tasks/:id', auth.usersOnly, taskCtrl.deleteTask)
-app.put('/api/tasks/update', auth.usersOnly, taskCtrl.updateTask)
+app.put('/api/tasks/update/:id', auth.usersOnly, taskCtrl.updateTask)
 
 // devCtrl endpoints
 app.get('/api/devs', auth.usersOnly, devCtrl.getDevs)
@@ -51,5 +51,6 @@ app.delete('/api/devs/:id', auth.usersOnly, devCtrl.deleteDev)
 
 // productCtrl endpoints
 app.get('/api/products', auth.usersOnly, productCtrl.getProducts)
+app.get('/api/products/:id', auth.usersOnly, productCtrl.getProduct)
 app.post('/api/products/new', auth.usersOnly, productCtrl.newProduct)
 app.delete('/api/products/:id', auth.usersOnly, productCtrl.deleteProduct)

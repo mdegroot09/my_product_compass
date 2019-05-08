@@ -6,6 +6,14 @@ module.exports = {
     res.status(200).send(products)
   },
 
+  getProduct: async (req, res) => {
+    let manager_id = req.session.user.id
+    let product_id = req.params.id
+    let db = req.app.get('db')
+    let product = await db.get_product({manager_id, product_id})
+    res.status(200).send(product)
+  },
+
   newProduct: async (req, res) => {
     let manager_id = req.session.user.id
     let {productName} = req.body
