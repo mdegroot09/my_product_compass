@@ -47,6 +47,9 @@ class Products extends Component {
             <Link to={`/tasks/${product.product_id}`}>
               <button onClick={() => this.updateRedux(product.productname)}>{product.productname}</button>
             </Link>
+            <Link to={`/componenttree/${product.product_id}`}>
+              <button>Product Tree</button>
+            </Link>
             <button onClick={() => this.deleteProduct(product.product_id)}>Delete</button>
             <Link to={`/products/update/${product.product_id}`}>
               <button>Edit</button>

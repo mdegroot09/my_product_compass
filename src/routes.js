@@ -25,7 +25,7 @@ export default (
     <Route path='/devs/new' component={NewDev}/>
     <Route path='/devs/update/:id' component={UpdateDev}/>
     <Route path='/devs/:id' component={Dev}/>
-    <Route path='/tasks/componenttree' component={ComponentTree}/>
+    <Route path='/componenttree/:id' component={ComponentTree}/>
     <Route path='/tasks/new' component={NewTask}/>
     <Route path='/tasks/update/:id' component={UpdateTask}/>
     <Route path='/tasks/:id' component={Tasks}/>

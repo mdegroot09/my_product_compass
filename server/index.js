@@ -58,4 +58,5 @@ app.put('/api/products/update', auth.usersOnly, productCtrl.updateProduct)
 app.delete('/api/products/:id', auth.usersOnly, productCtrl.deleteProduct)
 
 // componentCtrl endpoints
-app.get('/api/components', auth.usersOnly, componentCtrl.getComponents)
+app.get('/api/components/taskcount/:id', auth.usersOnly, componentCtrl.getComponentTaskCount)
+app.get('/api/components/:id', auth.usersOnly, componentCtrl.getComponents)

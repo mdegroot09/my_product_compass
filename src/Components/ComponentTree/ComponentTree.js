@@ -1,38 +1,3 @@
-// import React, {Component} from 'react'
-// // import Tree from 'react-tree-graph'
-// import Tree from 'react-d3-tree'
-
-// let data = {
-//   name: 'Parent',
-//   children: [{
-//     name: 'Child One', 
-//     children: [{
-//       name: 'Child1'
-//     }, {
-//       name: 'Child2'
-//     }]
-//   }, {
-//     name: 'Child Two'
-//   }]
-// };
-
-// export default class ComponentTree extends Component {
-//   render() {
-//     return (
-//       <div>
-//         ComponentTree
-//         <div style={{margin: '100px',width: '50em', height: '20em'}}>
-//           <Tree
-//             data={data}
-//             height={400}
-//             width={400}
-//           />
-//         </div>
-//       </div>
-//     )
-//   }
-// }
-
 import React, { Component } from 'react';
 import SortableTree from 'react-sortable-tree';
 import 'react-sortable-tree/style.css'; // This only needs to be imported once in your app
@@ -54,7 +19,8 @@ class ComponentTree extends Component {
       this.props.history.push('/login')
     } else {
       try {
-        let res = await axios.get('/api/components')
+        let product_id = this.props.match.params.id
+        let res = await axios.get(`/api/components/${product_id}`)
         await this.setState({components: res.data})
         this.sortComponentTree()
       } catch {
@@ -63,11 +29,21 @@ class ComponentTree extends Component {
     }
   }
 
-  sortComponentTree = () => {
+  sortComponentTree = async () => {
     let {components} = this.state
-    let newTreeData = []
+    let product_id = this.props.match.params.id
+    let res = await axios.get(`/api/components/taskcount/${product_id}`)
+    let componentTaskCount = res.data
+    console.log('componentTaskCount:', componentTaskCount)
+    let countIndex = '';
     for (let i = 0; i < components.length; i++){
-      components[i].title = components[i].name
+      countIndex = componentTaskCount.findIndex(component => component.component_id == components[i].component_id)
+      if (countIndex !== -1){
+        console.log('countIndex:', countIndex)
+        components[i].title = `${components[i].name} - Pending Tasks: ${componentTaskCount[countIndex].count}`
+      } else {
+        components[i].title = `${components[i].name} - Pending Tasks: 0`
+      }
       components[i].children = []
     }
     for (let i = 0; i < components.length; i++){
@@ -86,7 +62,8 @@ class ComponentTree extends Component {
   }
 
   render() {
-    console.log('ComponentTree this.state:', this.state)
+    // console.log('ComponentTree this.state:', this.state)
+    // console.log('ComponentTree this.props:', this.props)
     return (
       <div className='componentTree' style={{ height: 400 }}>
         <SortableTree
@@ -99,9 +76,10 @@ class ComponentTree extends Component {
 }
 
 let mapStateToProps = (reduxState) => {
-  const {manager_id} = reduxState
+  const {manager_id, productid} = reduxState
   return {
-    manager_id
+    manager_id,
+    productid
   }
 }
 
