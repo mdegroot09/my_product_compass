@@ -30,5 +30,14 @@ module.exports = {
     await db.delete_product({manager_id, product_id})
     let products = await db.get_all_products({manager_id})
     res.status(200).send(products)
+  },
+
+  updateProduct: async (req, res) => {
+    let manager_id = req.session.user.id
+    let {product_id, name} = req.body
+    let db = req.app.get('db')
+    await db.update_product({manager_id, product_id, name})
+    let products = await db.get_all_products({manager_id})
+    res.status(200).send(products)
   }
 }

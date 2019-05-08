@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {updateTasks} from '../redux/reducer'
+import {updateProducts} from '../redux/reducer'
 import axios from 'axios'
 
 class UpdateProduct extends Component {
@@ -10,8 +10,8 @@ class UpdateProduct extends Component {
     this.state = {
       product_id: '',
       name: '',
-      updateTaskError: false,
-      updateTaskErrorMessage: 'Something went wrong. Please try again.'
+      updateProduct: false,
+      updateProductMessage: 'Something went wrong. Please try again.'
     }
   }
 
@@ -34,26 +34,23 @@ class UpdateProduct extends Component {
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
-      updateTaskError: false
+      updateProduct: false
     })
   }
 
   handleLoginFormSubmit = (e) => {
 		e.preventDefault()
-    const {notes, dev_id, tickets, component_id} = this.state
-    const name = this.state.taskName
-    let task_id = this.props.match.params.id
-    let {product_id} = this.props
+    const {name, product_id} = this.state
 		try {
-      axios.put(`/api/tasks/update`, {task_id, name, notes, dev_id, component_id, tickets}).then(res => {
-        this.props.updateTasks(res.data)
+      axios.put(`/api/products/update`, {product_id, name}).then(res => {
+        this.props.updateProducts(res.data)
         console.log('it worked')
-        this.props.history.push(`/tasks/${product_id}`)
-        alert(`Task '${name}' updated under manager '${this.props.username}'.`)
+        this.props.history.push(`/products`)
+        alert(`Product '${name}' updated under manager '${this.props.username}'.`)
       })
 		} catch (err) {
       console.log('it didnt work')
-			this.setState({first_name: '', last_name: '', title: '', updateTaskError: true})
+			this.setState({name: '', updateProduct: true})
     }
   }
 
@@ -70,7 +67,7 @@ class UpdateProduct extends Component {
             <button>cancel</button>
           </Link>
         </form>
-        {this.state.updateTaskError && <h3>{this.state.updateTaskErrorMessage}</h3>}
+        {this.state.updateProduct && <h3>{this.state.updateProductMessage}</h3>}
       </>
     )
     
@@ -90,7 +87,7 @@ const mapStateToProps = (reduxState) => {
 }
 
 const mapDispatchToProps = {
-  updateTasks
+  updateProducts
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UpdateProduct))

@@ -55,7 +55,7 @@ class UpdateTask extends Component {
       })
 		} catch (err) {
       console.log('it didnt work')
-			this.setState({first_name: '', last_name: '', title: '', updateTaskError: true})
+			this.setState({taskName: '', notes: '', dev_id: 0, component_id: 0, tickets: 0, updateTaskError: true})
     }
   }
 
