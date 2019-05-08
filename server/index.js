@@ -6,6 +6,7 @@ const massive = require('massive')
 const taskCtrl = require('./controller/taskCtrl')
 const devCtrl = require('./controller/devCtrl')
 const productCtrl = require('./controller/productCtrl')
+const componentCtrl = require('./controller/componentCtrl')
 const authCtrl = require('./controller/authCtrl')
 const auth = require('./middleware/authMiddleware')
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
@@ -55,3 +56,6 @@ app.get('/api/products/:id', auth.usersOnly, productCtrl.getProduct)
 app.post('/api/products/new', auth.usersOnly, productCtrl.newProduct)
 app.put('/api/products/update', auth.usersOnly, productCtrl.updateProduct)
 app.delete('/api/products/:id', auth.usersOnly, productCtrl.deleteProduct)
+
+// componentCtrl endpoints
+app.get('/api/components', auth.usersOnly, componentCtrl.getComponents)
