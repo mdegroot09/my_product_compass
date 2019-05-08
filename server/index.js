@@ -43,7 +43,7 @@ app.post('/api/tasks/:id', auth.usersOnly, taskCtrl.deleteTask)
 app.put('/api/tasks/update/:id', auth.usersOnly, taskCtrl.updateTask)
 
 // devCtrl endpoints
-app.get('/api/devs', auth.usersOnly, devCtrl.getDevs)
+app.get('/api/devs', auth.usersOnly, devCtrl.getDevs) 
 app.get('/api/devs/:dev_id', auth.usersOnly, devCtrl.getDev)
 app.post('/api/devs/new', auth.usersOnly, devCtrl.newDev)
 app.put('/api/devs/update', auth.usersOnly, devCtrl.updateDev)

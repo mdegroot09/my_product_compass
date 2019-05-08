@@ -60,8 +60,6 @@ class UpdateTask extends Component {
   }
 
   render() {
-    console.log('UpdateTask this.state:', this.state)
-    console.log('UpdateTask this.props:', this.props)
     return (
       <>
         <h4>Update Task</h4>

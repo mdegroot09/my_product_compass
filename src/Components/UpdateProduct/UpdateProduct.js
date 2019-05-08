@@ -21,7 +21,6 @@ class UpdateProduct extends Component {
       this.props.history.push('/login')
     } else {
       let product_id = this.props.match.params.id
-      console.log('UpdateProduct product_id:', product_id)
       axios.get(`/api/products/${product_id}`).then(res => {
         let {product_id, name} = res.data[0]
         this.setState({product_id, name})
@@ -44,19 +43,15 @@ class UpdateProduct extends Component {
 		try {
       axios.put(`/api/products/update`, {product_id, name}).then(res => {
         this.props.updateProducts(res.data)
-        console.log('it worked')
         this.props.history.push(`/products`)
         alert(`Product '${name}' updated under manager '${this.props.username}'.`)
       })
 		} catch (err) {
-      console.log('it didnt work')
 			this.setState({name: '', updateProduct: true})
     }
   }
 
   render() {
-    console.log('UpdateProduct this.state:', this.state)
-    console.log('UpdateProduct this.props:', this.props)
     return (
       <>
         <h4>Update Product</h4>
