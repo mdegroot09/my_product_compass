@@ -40,33 +40,43 @@ class Products extends Component {
     let showProducts = this.props.products.map((product, i) => {
       if (currentProduct === product.product_id){
         return(
-          <h3 key={i}>{product.taskname}</h3>
+          <h3 className='task' key={i}><span>{product.taskname}</span></h3>
         )
       } else {
+
         currentProduct = product.product_id
         return (
           <div key={i}>
-            <Link to={`/tasks/${product.product_id}`}>
-              <button onClick={() => this.updateRedux(product.productname)}>{product.productname}</button>
-            </Link>
-            <Link to={`/componenttree/${product.product_id}`}>
-              <button>Product Tree</button>
-            </Link>
-            <button onClick={() => this.deleteProduct(product.product_id)}>Delete</button>
-            <Link to={`/products/update/${product.product_id}`}>
-              <button>Edit</button>
-            </Link>
-            <h3>{product.taskname}</h3>
+            <div className='productsDetails' >
+              <Link to={`/tasks/${product.product_id}`}>
+                <button className='productNameBtn' onClick={() => this.updateRedux(product.productname)}>{product.productname}</button>
+              </Link>
+              <div className='productsBtns'>
+                <Link to={`/componenttree/${product.product_id}`}>
+                  <button className='hideMeBtn'>
+                    <img className='treeIcon' src="https://i.ibb.co/HGKmDzK/diagram-icon.png" alt="component tree icon"/>
+                  </button>
+                </Link>
+                <Link to={`/products/update/${product.product_id}`}>
+                  <button className='getStarted editDelete'>Edit</button>
+                </Link>
+                <button className='getStarted editDelete delete' onClick={() => this.deleteProduct(product.product_id)}>Delete</button>
+              </div>
+            </div>
+            <h3 className='task'><span>{product.taskname}</span></h3>
           </div>
         )
       }
     })
     return (
-      <div>
+      <div className='productsMain'>
+        <h1 className='allProducts'>All Products</h1>
         <Link to='/products/new'>
-          <button>New Product</button>
+          <button className='getStarted newProductBtn'>new product</button>
         </Link>
-        {showProducts}
+        <div className='productsSubMain'>
+          {showProducts}
+        </div>
       </div>
     )
   }
