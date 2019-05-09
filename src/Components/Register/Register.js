@@ -48,17 +48,24 @@ class Register extends Component {
   render() {
     return (
       <>
-        <h3>Register</h3>
-        <form onSubmit={this.handleLoginFormSubmit}>
-          <input onChange={(e) => this.handleChange(e)} name='first_name' placeholder='first name' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} name='last_name' placeholder='last name' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} name='email' placeholder='email' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} name='company' placeholder='company' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} name='username' placeholder='username' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} name='password' placeholder='password' type="password"/>
-          <button>register</button>
+        <div className='credentialsDiv'>
+          <div className='credentials'>
+            <div>
+              <h1 className='credHeader'>Register</h1>
+              <h4 className='credPrompt'>Please enter your new profile info:</h4>
+            </div>
+        <form className='credInputs' onSubmit={this.handleLoginFormSubmit}>
+          <input className='input' onChange={(e) => this.handleChange(e)} name='first_name' placeholder='first name' type="text"/>
+          <input className='input' onChange={(e) => this.handleChange(e)} name='last_name' placeholder='last name' type="text"/>
+          <input className='input' onChange={(e) => this.handleChange(e)} name='email' placeholder='email' type="text"/>
+          <input className='input' onChange={(e) => this.handleChange(e)} name='company' placeholder='company' type="text"/>
+          <input className='input' onChange={(e) => this.handleChange(e)} name='username' placeholder='username' type="text"/>
+          <input className='input' onChange={(e) => this.handleChange(e)} name='password' placeholder='password' type="password"/>
+          <button className='getStarted credBtn'>register</button>
         </form>
-        {this.state.registerError && <h3>{this.state.registerErrorMessage}</h3>}
+          {this.state.registerError && <h3>{this.state.registerErrorMessage}</h3>}
+        </div>
+        </div>
       </>
     )
   }

@@ -55,7 +55,7 @@ class Header extends Component {
                   <button onClick={() => this.logout()} className='headerBtn'>logout</button> :
                   <>
                     <Link to='/register'>
-                      <button className='headerBtn hideOnSmall'>Signup</button>
+                      <button className='headerBtn hideOnSmall'>Register</button>
                     </Link>
                     <Link to='/login'>
                       <button className='headerBtn'>Login</button>

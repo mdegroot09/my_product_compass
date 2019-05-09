@@ -42,12 +42,11 @@ class Login extends Component {
         <div className='credentialsDiv'>
           <div className='credentials'>
             <div>
-              <h1 className='credHeader'>Login</h1>
-              <h4 class='credPrompt'>Please enter your credentials:</h4>
+              <h1 className='credHeader'>login</h1>
+              <h4 className='credPrompt'>Please enter your credentials:</h4>
             </div>
             <form className='credInputs' onSubmit={this.handleLoginFormSubmit}>
               <input className='input' onChange={(e) => this.handleChange(e)} name='username' placeholder='username' type="text"/>
-
               <input className='input' onChange={(e) => this.handleChange(e)} name='password' placeholder='password' type="password" autoComplete='cc-number'/>
               <button className='getStarted credBtn'>log in</button>
             </form>
