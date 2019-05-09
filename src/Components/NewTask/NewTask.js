@@ -76,7 +76,6 @@ class NewTask extends Component {
   render() {
     let {devs} = this.props
     let {components} = this.state
-    console.log('NewTask this.state:', this.state)
     let devButtons = devs.map((dev, i) => (
       <button key={i} className='dropdownBtn' onClick={() => this.devSelect(`${dev.devfirstname} ${dev.devlastname}`, dev.dev_id)}>{dev.devfirstname} {dev.devlastname}</button>
     ))

@@ -48,7 +48,7 @@ module.exports = {
 
   updateTask: async (req, res) => {
     let manager_id = req.session.user.id
-    let {task_id, name, due_date, notes, dev_id, component_id, tickets, product_id} = req.body
+    let {task_id, name, notes, dev_id, component_id, tickets, product_id} = req.body
     let db = req.app.get('db')
     await db.update_task({task_id, name, notes, dev_id, component_id, tickets, manager_id})
     let tasks = await db.get_all_tasks({product_id, manager_id})

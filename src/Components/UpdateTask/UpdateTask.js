@@ -50,7 +50,6 @@ class UpdateTask extends Component {
 		try {
       axios.put(`/api/tasks/update`, {task_id, name, notes, dev_id, component_id, tickets}).then(res => {
         this.props.updateTasks(res.data)
-        console.log('it worked')
         this.props.history.push(`/tasks/${product_id}`)
         alert(`Task '${name}' updated under manager '${this.props.username}'.`)
       })
@@ -61,6 +60,7 @@ class UpdateTask extends Component {
   }
 
   render() {
+    console.log('UpdateTask this.state:', this.state)
     return (
       <>
         <h4>Update Task</h4>
