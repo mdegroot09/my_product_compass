@@ -1,0 +1,53 @@
+.credentialsDiv {
+  width: 100vw;
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.credentials {
+  height: calc(100vh - 200px);
+  width: 30vw;
+  min-width: 300px;
+  background: rgba(206, 206, 206, 0.61);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  border: solid gray 2px;
+  color: rgb(66, 66, 66);
+}
+
+.credHeader {
+  margin: 25px 0;
+}
+
+.credInputs {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  border-radius: 3px;
+  margin-top: 30px;
+  height: 25px;
+  width: 200px;
+}
+
+.credBtn {
+  height: 50px;
+  width: 100px;
+}
+
+.credPrompt {
+  color: rgb(78, 78, 78);
+}
+
+.errorMsg {
+  margin: 0 20px;
+}

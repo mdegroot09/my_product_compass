@@ -62,7 +62,6 @@ class newComponentError extends Component {
     let componentButtons = components.map((component, i) => (
       <button key={i} className='dropdownBtn' onClick={() => this.componentSelect(`${component.name}`, component.component_id)}>{component.name}</button>
     ))
-    console.log('NewComponent this.state:', this.state)
     let product_id = this.props.match.params.id
     return (
       <>

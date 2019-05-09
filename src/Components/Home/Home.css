@@ -40,22 +40,15 @@
   transition: all .05s ease-in-out;
 }
 
-.homeTitle:hover {
-  transform: scale(1.03);
-}
-
 .titleImg {
   width: 60px;
   margin-top: 20px;
 }
 
-.titleImg:hover {
-  transform: scale(1.04);
-}
-
-.mainLogo {
-  width: 100%;
-  max-width: 800px;
+.homeSubtitle {
+  text-shadow: 0px 0px 10px rgb(68, 68, 68);
+  margin: 5px 10px 0 10px;
+  font-style: italic;
 }
 
 .getStarted {
@@ -75,6 +68,40 @@
   background: rgb(27, 78, 136);
   transform: scale(1.05);
   cursor: pointer;
+}
+
+.prioritize {
+  color: black;
+  margin: 50px 10px 30px 10px;
+  text-shadow: 0px 0px 10px rgb(201, 201, 201);
+}
+
+.prioritizeImg {
+  width: 500px;
+  margin: 0 30px;
+}
+
+.lowerSection {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+}
+
+.layoutDiv {
+  background-image: url('https://i.ibb.co/1G8LJfQ/Capture.png');
+  margin: 50px;
+  width: 85vw;
+  height: 50vw;
+  padding-top: .1px;
+}
+
+.layout {
+  color: rgb(0, 162, 255);
+  text-shadow: 0px 0px 10px rgb(255, 255, 255);
+  margin-top: 20px;
+  font-size: 35px;
+  text-decoration: solid;
 }
 
 @media (max-width: 1100px){
@@ -104,6 +131,9 @@
     width: 30px;
     margin-top: 10px;
   }
+  .prioritizeImg {
+    width: 350px;
+  }
 }
 
 @media (max-width: 550px){
@@ -113,5 +143,14 @@
   .titleImg {
     width: 22px;
     margin-top: 7px;
+  }
+  .prioritizeImg {
+    width: 300px;
+  }
+}
+
+@media (max-width: 400px){
+  .prioritizeImg {
+    width: 200px;
   }
 }
