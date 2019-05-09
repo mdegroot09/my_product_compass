@@ -11,6 +11,7 @@ import Products from './Components/Products/Products'
 import Register from './Components/Register/Register'
 import NewProduct from './Components/NewProduct/NewProduct'
 import NewTask from './Components/NewTask/NewTask'
+import NewComponent from './Components/NewComponent/NewComponent'
 import Tasks from './Components/Tasks/Tasks'
 import UpdateDev from './Components/UpdateDev/UpdateDev'
 import UpdateTask from './Components/UpdateTask/UpdateTask'
@@ -27,6 +28,7 @@ export default (
     <Route path='/devs/update/:id' component={UpdateDev}/>
     <Route path='/devs/:id' component={Dev}/>
     <Route path='/componenttree/:id' component={ComponentTree}/>
+    <Route path='/components/new/:id' component={NewComponent}/>
     <Route path='/tasks/new' component={NewTask}/>
     <Route path='/tasks/update/:id' component={UpdateTask}/>
     <Route path='/tasks/:id' component={Tasks}/>

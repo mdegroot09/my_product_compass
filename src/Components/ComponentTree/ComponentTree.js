@@ -3,7 +3,7 @@ import SortableTree from 'react-sortable-tree';
 import 'react-sortable-tree/style.css'; // This only needs to be imported once in your app
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 class ComponentTree extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class ComponentTree extends Component {
     console.log('componentTaskCount:', componentTaskCount)
     let countIndex = '';
     for (let i = 0; i < components.length; i++){
-      countIndex = componentTaskCount.findIndex(component => component.component_id == components[i].component_id)
+      countIndex = componentTaskCount.findIndex(component => component.component_id === components[i].component_id)
       if (countIndex !== -1){
         console.log('countIndex:', countIndex)
         components[i].title = `${components[i].name} - Pending Tasks: ${componentTaskCount[countIndex].count}`
@@ -48,7 +48,7 @@ class ComponentTree extends Component {
     }
     for (let i = 0; i < components.length; i++){
       if (components[i].parent_component){
-        let parentIndex = components.findIndex(component => component.component_id == components[i].parent_component)
+        let parentIndex = components.findIndex(component => component.component_id === components[i].parent_component)
         components[parentIndex].children.push(components[i])
       }
     }
@@ -62,26 +62,30 @@ class ComponentTree extends Component {
   }
 
   updateParentId = (e) => {
-    console.log('e:', e)
     let parent_component = e.nextParentNode.component_id
     let product_id = this.props.match.params.id
     let {component_id} = e.node
     axios.put(`/api/components/update/${product_id}`, {component_id, parent_component}).then(res => {
-      console.log('You did it')
+      console.log('Parent Id updated in DB')
     }).catch(err => console.log('Something went wrong.'))
   }
 
   render() {
-    console.log('ComponentTree this.state:', this.state)
-    console.log('ComponentTree this.props:', this.props)
+    let product_id = this.props.match.params.id
     return (
-      <div className='componentTree'>
-        <SortableTree
-          treeData={this.state.treeData}
-          onChange={treeData => this.setState({ treeData })}
-          onMoveNode={(e) => this.updateParentId(e)}
-        />
-      </div>
+      <>
+        <h1>Component Tree</h1>
+        <div className='componentTree'>
+          <Link to={`/components/new/${product_id}`}>
+            <button>New Component</button>
+          </Link>
+          <SortableTree
+            treeData={this.state.treeData}
+            onChange={treeData => this.setState({ treeData })}
+            onMoveNode={(e) => this.updateParentId(e)}
+          />
+        </div>
+      </>
     );
   }
 }
