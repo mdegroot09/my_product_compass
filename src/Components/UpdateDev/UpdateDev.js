@@ -60,7 +60,6 @@ class UpdateDev extends Component {
   }
 
   render() {
-    console.log('UpdateDev this.state:', this.state)
     return (
       <>
         <h4>Update Dev</h4>
