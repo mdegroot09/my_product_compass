@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {updateProducts} from '../redux/reducer'
 import axios from 'axios'
 
@@ -21,9 +21,11 @@ class NewTask extends Component {
 
   componentWillMount(){
     // if not logged in, reroute to login screen
-    if (!this.props.manager_id){
-      this.props.history.push('/login')
-    } 
+    axios.get('/auth/checkForSession').then(res => {
+      if(!res.data.user){
+        this.props.history.push('/login')
+      }
+    })
   }
 
   handleChange = (e) => {
@@ -62,6 +64,9 @@ class NewTask extends Component {
           <input onChange={(e) => this.handleChange(e)} name='component_id' placeholder='component id' type="text"/>
           <input onChange={(e) => this.handleChange(e)} name='tickets' placeholder='tickets' type="text"/>
           <button>create</button>
+          <Link to={`/tasks/${this.props.productid}`}>
+            <button>cancel</button>
+          </Link>
         </form>
         {this.state.newTaskError && <h3>{this.state.newTaskErrorMessage}</h3>}
       </>

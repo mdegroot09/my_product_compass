@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {updateDevs} from '../redux/reducer'
 import axios from 'axios'
 
@@ -18,9 +18,11 @@ class NewDev extends Component {
 
   componentWillMount(){
     // if not logged in, reroute to login screen
-    if (!this.props.manager_id){
-      this.props.history.push('/login')
-    } 
+    axios.get('/auth/checkForSession').then(res => {
+      if(!res.data.user){
+        this.props.history.push('/login')
+      }
+    })
   }
 
   handleChange = (e) => {
@@ -53,6 +55,9 @@ class NewDev extends Component {
           <input onChange={(e) => this.handleChange(e)} name='last_name' placeholder='last name' type="text"/>
           <input onChange={(e) => this.handleChange(e)} name='title' placeholder='title' type="text"/>
           <button>create</button>
+          <Link to={'/devs'}>
+            <button>cancel</button>
+          </Link>
         </form>
         {this.state.newDevError && <h3>{this.state.newDevErrorMessage}</h3>}
       </>

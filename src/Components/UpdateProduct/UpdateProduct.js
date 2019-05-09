@@ -17,17 +17,19 @@ class UpdateProduct extends Component {
 
   componentWillMount = async () => {
     // if not logged in, reroute to login screen, otherwise render axios call
-    if (!this.props.manager_id){
-      this.props.history.push('/login')
-    } else {
-      let product_id = this.props.match.params.id
-      axios.get(`/api/products/${product_id}`).then(res => {
-        let {product_id, name} = res.data[0]
-        this.setState({product_id, name})
-      }).catch(err => {
-        console.log('err:', err)
-      })
-    }
+    axios.get('/auth/checkForSession').then(res => {
+      if(!res.data.user){
+        this.props.history.push('/login')
+      } else {
+        let product_id = this.props.match.params.id
+        axios.get(`/api/products/${product_id}`).then(res => {
+          let {product_id, name} = res.data[0]
+          this.setState({product_id, name})
+        }).catch(err => {
+          console.log('err:', err)
+        })
+      }
+    })
   }
 
   handleChange = (e) => {

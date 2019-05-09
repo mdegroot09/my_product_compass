@@ -8,21 +8,22 @@ class Devs extends Component {
 
   componentWillMount(){
     // if not logged in, reroute to login screen, otherwise render axios call
-    if (!this.props.manager_id){
-      this.props.history.push('/login')
-    } else {
-      axios.get('/api/devs').then(res => {
-        this.props.updateDevs(res.data)
-      }).catch(err => {
-        console.log('err:', err)
-      })
-    }
+    axios.get('/auth/checkForSession').then(res => {
+      if(!res.data.user){
+        this.props.history.push('/login')
+      } else {
+        axios.get('/api/devs').then(res => {
+          this.props.updateDevs(res.data)
+        }).catch(err => {
+          console.log('err:', err)
+        })
+      }
+    })
   }
 
   deleteDev = (id) => {
     axios.delete(`/api/devs/${id}`).then(res => {
       this.props.updateDevs(res.data)
-      alert('You jerk.')
     }).catch(err => {
       console.log('err:', err)
     })
@@ -37,7 +38,6 @@ class Devs extends Component {
         <p className='showDevDetail'>Title: {dev.title}</p>
         <p className='showDevDetail'>Company: {dev.company}</p>
         <p className='showDevDetail'>Manager: {dev.mgrfirstname} {dev.mgrlastname}</p>
-        <p className='showDevDetail'>Product Name: {dev.productname}</p>
         <button onClick={() => this.deleteDev(dev.dev_id)}>Delete</button>
         <Link to={`/devs/update/${dev.dev_id}`}>
           <button>Edit</button>

@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {updateProducts} from '../redux/reducer'
 import axios from 'axios'
 
 class NewComponent extends Component {
@@ -17,9 +16,11 @@ class NewComponent extends Component {
 
   componentWillMount(){
     // if not logged in, reroute to login screen
-    if (!this.props.manager_id){
-      this.props.history.push('/login')
-    } 
+    axios.get('/auth/checkForSession').then(res => {
+      if(!res.data.user){
+        this.props.history.push('/login')
+      }
+    })
   }
 
   handleChange = (e) => {

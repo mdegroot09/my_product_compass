@@ -14,16 +14,18 @@ class Dev extends Component {
 
   componentWillMount(){
     // if not logged in, reroute to login screen, otherwise render axios call
-    if (!this.props.manager_id){
-      this.props.history.push('/login')
-    } else {
-      let dev_id = this.props.match.params.id
-      axios.get(`/api/devs/${dev_id}`).then(res => {
-        this.props.updateDev(res.data)
-      }).catch(err => {
-        console.log('err:', err)
-      })
-    }
+    axios.get('/auth/checkForSession').then(res => {
+      if(!res.data.user){
+        this.props.history.push('/login')
+      } else {
+        let dev_id = this.props.match.params.id
+        axios.get(`/api/devs/${dev_id}`).then(res => {
+          this.props.updateDev(res.data)
+        }).catch(err => {
+          console.log('err:', err)
+        })
+      }
+    })
   }
 
   deleteDev = (dev_id) => {

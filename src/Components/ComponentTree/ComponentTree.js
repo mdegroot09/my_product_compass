@@ -15,7 +15,8 @@ class ComponentTree extends Component {
   }
 
   componentWillMount = async () => {
-    if (!this.props.manager_id){
+    let res = await axios.get('/auth/checkForSession')
+    if(!res.data.user){
       this.props.history.push('/login')
     } else {
       try {

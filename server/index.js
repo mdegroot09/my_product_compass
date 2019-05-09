@@ -31,6 +31,7 @@ massive(CONNECTION_STRING).then(db => {
 
 // Credentials endpoints
 app.get('/auth/logout', authCtrl.logout)
+app.get('/auth/checkForSession', authCtrl.checkForSession)
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 
@@ -60,5 +61,5 @@ app.delete('/api/products/:id', auth.usersOnly, productCtrl.deleteProduct)
 // componentCtrl endpoints
 app.get('/api/components/taskcount/:id', auth.usersOnly, componentCtrl.getComponentTaskCount)
 app.get('/api/components/:id', auth.usersOnly, componentCtrl.getComponents)
-app.put('/api/components/update/:id', auth.usersOnly, componentCtrl.updateParentId)
 app.post('/api/components/new', auth.usersOnly, componentCtrl.createComponent)
+app.put('/api/components/update/:id', auth.usersOnly, componentCtrl.updateParentId)

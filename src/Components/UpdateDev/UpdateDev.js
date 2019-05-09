@@ -19,7 +19,8 @@ class UpdateDev extends Component {
 
   componentWillMount = async () => {
     // if not logged in, reroute to login screen
-    if (!this.props.manager_id){
+    let res = await axios.get('/auth/checkForSession')
+    if(!res.data.user){
       this.props.history.push('/login')
     } else {
       try {

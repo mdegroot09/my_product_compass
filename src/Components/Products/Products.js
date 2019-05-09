@@ -8,16 +8,18 @@ class Products extends Component {
 
   componentWillMount(){
     // if not logged in, reroute to login screen, otherwise render axios call
-    if (!this.props.manager_id){
-      this.props.history.push('/login')
-    } else {
-      axios.get('/api/products').then(res => {
-        this.props.updateProducts(res.data)
-      }).catch(err => {
-        console.log('err:', err)
-      })
-      this.render()
-    }
+    axios.get('/auth/checkForSession').then(res => {
+      if(!res.data.user){
+        this.props.history.push('/login')
+      } else {
+        axios.get('/api/products').then(res => {
+          this.props.updateProducts(res.data)
+        }).catch(err => {
+          console.log('err:', err)
+        })
+        this.render()
+      }
+    })
   }
 
   updateRedux = (productname) => {

@@ -14,18 +14,20 @@ class Tasks extends Component {
 
   componentWillMount(){
     // if not logged in, reroute to login screen, otherwise render axios call
-    if (!this.props.manager_id){
-      this.props.history.push('/login')
-    } else {
-      let product_id = this.props.match.params.id
-      axios.get(`/api/tasks/${product_id}`).then(res => {
-        this.props.updateTasks(res.data)
-        this.props.updateProductId(product_id)
-      }).catch(err => {
-        console.log('err:', err)
-      })
-      this.render()
-    }
+    axios.get('/auth/checkForSession').then(res => {
+      if(!res.data.user){
+        this.props.history.push('/login')
+      } else {
+        let product_id = this.props.match.params.id
+        axios.get(`/api/tasks/${product_id}`).then(res => {
+          this.props.updateTasks(res.data)
+          this.props.updateProductId(product_id)
+        }).catch(err => {
+          console.log('err:', err)
+        })
+        this.render()
+      }
+    })
   }
 
   decrement(task_id){

@@ -16,9 +16,11 @@ class NewProduct extends Component {
 
   componentWillMount(){
     // if not logged in, reroute to login screen
-    if (!this.props.manager_id){
-      this.props.history.push('/login')
-    } 
+    axios.get('/auth/checkForSession').then(res => {
+      if(!res.data.user){
+        this.props.history.push('/login')
+      }
+    })
   }
 
   handleChange = (e) => {
