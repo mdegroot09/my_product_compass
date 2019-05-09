@@ -29,7 +29,7 @@ export default (
     <Route path='/devs/:id' component={Dev}/>
     <Route path='/componenttree/:id' component={ComponentTree}/>
     <Route path='/components/new/:id' component={NewComponent}/>
-    <Route path='/tasks/new' component={NewTask}/>
+    <Route exact path='/tasks/new/:id' component={NewTask}/>
     <Route path='/tasks/update/:id' component={UpdateTask}/>
     <Route path='/tasks/:id' component={Tasks}/>
     <Route path='/about' component={About}/>

@@ -1,7 +1,7 @@
 insert into tasks (
   name,
   notes,
-  dev_id,
+  -- dev_id,
   component_id,
   manager_id,
   product_id,
@@ -9,9 +9,10 @@ insert into tasks (
 ) values (
   ${taskName},
   ${notes},
-  ${dev_id},
+  -- ${dev_id},
   ${component_id},
   ${manager_id},
   ${product_id},
   ${tickets}
 )
+returning *;

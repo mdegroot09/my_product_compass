@@ -47,7 +47,6 @@ class Tasks extends Component {
     let product_id = this.props.match.params.id
     axios.post(`/api/tasks/${product_id}`, {task_id}).then(res => {
       this.props.updateTasks(res.data)
-      alert('You jerk.')
     }).catch(err => {
       console.log('err:', err)
     })
@@ -62,7 +61,6 @@ class Tasks extends Component {
           <Link to={`/devs/${task.dev_id}`}>
             <button>Developer: {task.first_name} {task.last_name}</button>
           </Link>
-          <p>Due Date: {task.due_date}</p>
           <p>Requests/Tickets: 
             <button onClick={() => this.decrement(task.task_id)}>-</button>
             {task.tickets}
@@ -80,7 +78,7 @@ class Tasks extends Component {
     let product_id = this.props.match.params.id
     return (
       <div>
-        <Link to='/tasks/new'>
+        <Link to={`/tasks/new/${product_id}`}>
           <button>New Task</button>
         </Link>
         <Link to={`/componenttree/${product_id}`}>

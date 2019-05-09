@@ -25,10 +25,13 @@ module.exports = {
 
   newTask: async (req, res) => {
     let manager_id = req.session.user.id
-    let {taskName, due_date, notes, dev_id, component_id, tickets} = req.body
+    let {taskName, notes, dev_id, component_id, tickets} = req.body
     let product_id = req.body.productid
     let db = req.app.get('db')
-    await db.new_task({manager_id, taskName, due_date, notes, dev_id, component_id, tickets, product_id})
+    let taskArr = await db.new_task({manager_id, taskName, notes, dev_id, component_id, tickets, product_id})
+    let task_id = taskArr[0].task_id
+    let name = taskName
+    await db.update_task({task_id, name, notes, dev_id, component_id, tickets, manager_id})
     let tasks = await db.get_all_tasks({product_id, manager_id})
     res.status(200).send(tasks)
   },

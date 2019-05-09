@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {updateProducts} from '../redux/reducer'
 import axios from 'axios'
 
@@ -53,6 +53,9 @@ class NewProduct extends Component {
         <form onSubmit={this.handleLoginFormSubmit}>
           <input onChange={(e) => this.handleChange(e)} name='productName' placeholder='product name' type="text"/>
           <button>create</button>
+          <Link to='/products'>
+            <button>cancel</button>
+          </Link>
         </form>
         {this.state.newProductError && <h3>{this.state.newProductErrorMessage}</h3>}
       </>
