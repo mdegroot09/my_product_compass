@@ -1,4 +1,4 @@
-header {
+.header {
   height: 50px;
   width: 100vw;
   padding-top: 20px;
@@ -43,11 +43,26 @@ header {
   transition: all .1s ease-in-out;
 }
 
+.hideOnSmall {
+  display: inline-block;
+}
+
 .headerBtn:hover {
-  /* color: rgb(214, 214, 214); */
   transform: scale(1.12);
 }
 
 .headerRight {
   margin-right: 30px;
+}
+
+.menuIcon {
+  width: 30px;
+  display: none;
+}
+
+
+@media (max-width: 650px){
+  .hideOnSmall{
+    display: none;
+  }
 }
