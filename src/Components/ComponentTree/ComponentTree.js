@@ -34,12 +34,10 @@ class ComponentTree extends Component {
     let product_id = this.props.match.params.id
     let res = await axios.get(`/api/components/taskcount/${product_id}`)
     let componentTaskCount = res.data
-    console.log('componentTaskCount:', componentTaskCount)
     let countIndex = '';
     for (let i = 0; i < components.length; i++){
       countIndex = componentTaskCount.findIndex(component => component.component_id === components[i].component_id)
       if (countIndex !== -1){
-        console.log('countIndex:', countIndex)
         components[i].title = `${components[i].name} - Pending Tasks: ${componentTaskCount[countIndex].count}`
       } else {
         components[i].title = `${components[i].name} - Pending Tasks: 0`
@@ -66,7 +64,6 @@ class ComponentTree extends Component {
     let product_id = this.props.match.params.id
     let {component_id} = e.node
     axios.put(`/api/components/update/${product_id}`, {component_id, parent_component}).then(res => {
-      console.log('Parent Id updated in DB')
     }).catch(err => console.log('Something went wrong.'))
   }
 
@@ -78,6 +75,9 @@ class ComponentTree extends Component {
         <div className='componentTree'>
           <Link to={`/components/new/${product_id}`}>
             <button>New Component</button>
+          </Link>
+          <Link to={`/tasks/${product_id}`}>
+            <button>Go To Tasks</button>
           </Link>
           <SortableTree
             treeData={this.state.treeData}

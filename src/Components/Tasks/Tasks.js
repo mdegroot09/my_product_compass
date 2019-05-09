@@ -43,7 +43,6 @@ class Tasks extends Component {
 
   deleteTask = (task_id) => {
     let product_id = this.props.match.params.id
-    console.log('task_id:', task_id)
     axios.post(`/api/tasks/${product_id}`, {task_id}).then(res => {
       this.props.updateTasks(res.data)
       alert('You jerk.')
@@ -53,7 +52,6 @@ class Tasks extends Component {
   }
 
   render() {
-    console.log('Tasks this.props:', this.props)
     // render a div for each task with its respective data
     let showTasks = this.props.tasks.map((task,i) => (
       <div className='showTask' key={i}>
@@ -77,10 +75,14 @@ class Tasks extends Component {
 
     // sort the tasks shown by number of tickets
     let showTasksSorted = showTasks.sort((a,b) => a.tickets - b.tickets)
+    let product_id = this.props.match.params.id
     return (
       <div>
         <Link to='/tasks/new'>
           <button>New Task</button>
+        </Link>
+        <Link to={`/componenttree/${product_id}`}>
+          <button>Product Tree</button>
         </Link>
         {showTasksSorted}
       </div>
