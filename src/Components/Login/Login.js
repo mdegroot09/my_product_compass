@@ -30,7 +30,6 @@ class Login extends Component {
 			this.props.updateManagerId(res.data.id)
 			this.props.updateUsername(username)
       this.props.history.push('/products')
-      alert('You are now logged in as: ' + res.data.username)
 		} catch (err) {
 			this.setState({ username: '', password: '', loginError: true })
     }

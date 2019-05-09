@@ -91,7 +91,7 @@ class NewTask extends Component {
         <input onChange={(e) => this.handleChange(e)} name='notes' placeholder='notes' type="text"/>
 
         <div className="dropdown">
-          <span id='devIdChange'>select developer</span>
+          <span id='devIdChange'>select dev</span>
           <div className="dropdown-content">
             {devButtons}
           </div>

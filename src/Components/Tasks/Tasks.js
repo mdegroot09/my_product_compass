@@ -59,7 +59,7 @@ class Tasks extends Component {
           <p>Task: {task.name}</p>
           <p>Notes: {task.notes}</p>
           <Link to={`/devs/${task.dev_id}`}>
-            <button>Developer: {task.first_name} {task.last_name}</button>
+            <button>Dev: {task.first_name} {task.last_name}</button>
           </Link>
           <p>Requests/Tickets: 
             <button onClick={() => this.decrement(task.task_id)}>-</button>
