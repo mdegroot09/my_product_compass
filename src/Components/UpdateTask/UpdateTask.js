@@ -102,7 +102,7 @@ class UpdateTask extends Component {
           <div className="dropdown">
             {devIndex !== -1 ?
               <span id='devIdChange'>{devs[devIndex].devfirstname} {devs[devIndex].devlastname}</span>
-              : <span id='devIdChange'>select dev  <img className='dropdownArrow' src="https://image.flaticon.com/icons/svg/60/60995.svg" alt="dropdown arrow"/></span>}
+              : <span id='devIdChange'>select dev<img className='dropdownArrow' src="https://image.flaticon.com/icons/svg/60/60995.svg" alt="dropdown arrow"/></span>}
             <div className="dropdown-content">
               {devButtons}
             </div>
@@ -110,7 +110,7 @@ class UpdateTask extends Component {
           <div className="dropdown">
             {componentIndex !== -1 ?
               <span id='componentIdChange'>{components[componentIndex].name}</span>
-              : <span id='componentIdChange'>select component  <img className='dropdownArrow' src="https://image.flaticon.com/icons/svg/60/60995.svg" alt="dropdown arrow"/></span>}
+              : <span id='componentIdChange'>select component<img className='dropdownArrow' src="https://image.flaticon.com/icons/svg/60/60995.svg" alt="dropdown arrow"/></span>}
             <div className="dropdown-content">
               {componentButtons}
             </div>
