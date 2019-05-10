@@ -38,22 +38,20 @@ class Login extends Component {
 
   render() {
     return (
-      <>
-        <div className='credentialsDiv'>
-          <div className='credentials'>
-            <div>
-              <h1 className='credHeader'>login</h1>
-              <h4 className='credPrompt'>Please enter your credentials:</h4>
-            </div>
-            <form className='credInputs' onSubmit={this.handleLoginFormSubmit}>
-              <input className='input' onChange={(e) => this.handleChange(e)} name='username' placeholder='username' type="text"/>
-              <input className='input' onChange={(e) => this.handleChange(e)} name='password' placeholder='password' type="password" autoComplete='cc-number'/>
-              <button className='getStarted credBtn'>log in</button>
-            </form>
-            <p className='errorMsg'>{this.state.loginError && <h3>{this.state.loginErrorMessage}</h3>}</p>
+      <div className='credentialsDiv'>
+        <div className='credentials'>
+          <div>
+            <h1 className='credHeader'>login</h1>
+            <h4 className='credPrompt'>Please enter your credentials:</h4>
           </div>
+          <form className='credInputs' onSubmit={this.handleLoginFormSubmit}>
+            <input className='input' onChange={(e) => this.handleChange(e)} name='username' placeholder='username' type="text"/>
+            <input className='input' onChange={(e) => this.handleChange(e)} name='password' placeholder='password' type="password" autoComplete='cc-number'/>
+            <button className='getStarted credBtn'>log in</button>
+          </form>
+          <p className='errorMsg'>{this.state.loginError && <h3>{this.state.loginErrorMessage}</h3>}</p>
         </div>
-      </>
+      </div>
     )
   }
 }

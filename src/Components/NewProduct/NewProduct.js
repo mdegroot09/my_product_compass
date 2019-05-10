@@ -48,17 +48,20 @@ class NewProduct extends Component {
 
   render() {
     return (
-      <>
-        <h3>New Product</h3>
-        <form onSubmit={this.handleLoginFormSubmit}>
-          <input onChange={(e) => this.handleChange(e)} name='productName' placeholder='product name' type="text"/>
-          <button>create</button>
-          <Link to='/products'>
-            <button>cancel</button>
-          </Link>
-        </form>
-        {this.state.newProductError && <h3>{this.state.newProductErrorMessage}</h3>}
-      </>
+      <div className='credentialsDiv'>
+        <div className='credentials'>
+          <h1 className='credHeader'>New Product</h1>
+          <h4 className='credPrompt'>Please enter a new product name:</h4>
+          <form className='credInputs' onSubmit={this.handleLoginFormSubmit}>
+            <input className='input' onChange={(e) => this.handleChange(e)} name='productName' placeholder='product name' type="text"/>
+            <button className='getStarted credBtn'>create</button>
+            <Link to='/products'>
+              <button className='getStarted credBtn cancelBtn'>cancel</button>
+            </Link>
+          </form>
+          {this.state.newProductError && <h3>{this.state.newProductErrorMessage}</h3>}
+        </div>
+      </div>
     )
   }
 }

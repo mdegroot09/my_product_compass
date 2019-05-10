@@ -1,0 +1,7 @@
+.cancelBtn {
+  background: rgb(90, 90, 90);
+}
+
+.cancelBtn:hover {
+  background: rgb(59, 59, 59);
+}

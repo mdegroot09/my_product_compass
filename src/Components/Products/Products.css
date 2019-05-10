@@ -14,7 +14,6 @@
 
 .productsSubMain {
   max-height: 100%;
-  /* width: calc(100vw - 80px); */
   overflow: auto;
   position: relative;
   background: rgb(209, 209, 209);
@@ -73,6 +72,10 @@
   justify-self: flex-end;
 }
 
+.editDelete:hover {
+  transform: scale(1.1);
+}
+
 .delete {
   background: rgb(216, 0, 0);
 }
@@ -95,9 +98,24 @@
   background: transparent;
   cursor: pointer;
   margin-left: 25vw;
+  transition: all .15s ease-in-out;
+}
+
+.treeIcon:hover {
+  transform: scale(1.15);
+  cursor: pointer;
 }
 
 .hideMeBtn {
   background: transparent;
   border: transparent;
+}
+
+@media (max-width: 700px){
+  .treeIcon {
+    margin-left: 20px;
+  }
+  .productsBtns {
+    flex-direction: column;
+  }
 }
