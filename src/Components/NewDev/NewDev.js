@@ -58,7 +58,7 @@ class NewDev extends Component {
             <input className='input' onChange={(e) => this.handleChange(e)} name='title' placeholder='title' type="text"/>
             <button className='getStarted credBtn'>create</button>
             <Link to='/devs'>
-              <button className='getStarted credBtn cancelBtn'>cancel</button>
+              <button className='getStarted credBtn cancelBtn' id='newDevCancel'>cancel</button>
             </Link>
           </form>
           {this.state.newDevError && <h3>{this.state.newDevErrorMessage}</h3>}

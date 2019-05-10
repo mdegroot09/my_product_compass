@@ -53,7 +53,7 @@ class Products extends Component {
               </Link>
               <div className='productsBtns'>
                 <Link to={`/componenttree/${product.product_id}`}>
-                  <button className='hideMeBtn'>
+                  <button className='hideMeBtn' onClick={() => this.updateRedux(product.productname)}>
                     <img className='treeIcon' src="https://i.ibb.co/HGKmDzK/diagram-icon.png" alt="component tree icon"/>
                   </button>
                 </Link>

@@ -69,10 +69,11 @@ class ComponentTree extends Component {
   }
 
   render() {
+    let {productname} = this.props
     let product_id = this.props.match.params.id
     return (
       <div className='componentTreeMain'>
-        <h1>Component Tree</h1>
+        <h1>'{productname}' Component Tree</h1>
         <div className='componentTree'>
           <Link to={`/components/new/${product_id}`}>
             <button className='getStarted newComponentBtn'>New Component</button>
@@ -92,10 +93,11 @@ class ComponentTree extends Component {
 }
 
 let mapStateToProps = (reduxState) => {
-  const {manager_id, productid} = reduxState
+  const {manager_id, productid, productname} = reduxState
   return {
     manager_id,
-    productid
+    productid,
+    productname
   }
 }
 
