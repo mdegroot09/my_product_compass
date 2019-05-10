@@ -48,19 +48,22 @@ class NewDev extends Component {
 
   render() {
     return (
-      <>
-        <h4>New Dev</h4>
-        <form onSubmit={this.handleLoginFormSubmit}>
-          <input onChange={(e) => this.handleChange(e)} name='first_name' placeholder='first name' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} name='last_name' placeholder='last name' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} name='title' placeholder='title' type="text"/>
-          <button>create</button>
-          <Link to={'/devs'}>
-            <button>cancel</button>
-          </Link>
-        </form>
-        {this.state.newDevError && <h3>{this.state.newDevErrorMessage}</h3>}
-      </>
+      <div className='credentialsDiv'>
+        <div className='credentials'>
+          <h1 className='credHeader'>New Dev</h1>
+          <h4 className='credPrompt'>Please enter info for a new dev:</h4>
+          <form className='credInputs' onSubmit={this.handleLoginFormSubmit}>
+            <input className='input' onChange={(e) => this.handleChange(e)} name='first_name' placeholder='first name' type="text"/>
+            <input className='input' onChange={(e) => this.handleChange(e)} name='last_name' placeholder='last name' type="text"/>
+            <input className='input' onChange={(e) => this.handleChange(e)} name='title' placeholder='title' type="text"/>
+            <button className='getStarted credBtn'>create</button>
+            <Link to='/devs'>
+              <button className='getStarted credBtn cancelBtn'>cancel</button>
+            </Link>
+          </form>
+          {this.state.newDevError && <h3>{this.state.newDevErrorMessage}</h3>}
+        </div>
+      </div>
     )
   }
 }
