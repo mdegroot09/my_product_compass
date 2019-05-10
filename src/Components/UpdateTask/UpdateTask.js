@@ -93,36 +93,36 @@ class UpdateTask extends Component {
       <button key={i} className='dropdownBtn' onClick={() => this.componentSelect(`${component.name}`, component.component_id)}>{component.name}</button>
     ))
     return (
-      <>
-        <h4>Update Task</h4>
-        <input onChange={(e) => this.handleChange(e)} value={this.state.taskName} name='taskName' placeholder='task name' type="text"/>
-        <input onChange={(e) => this.handleChange(e)} value={this.state.notes} name='notes' placeholder='notes' type="text"/>
-
-        <div className="dropdown">
-          {devIndex !== -1 ?
-            <span id='devIdChange'>{devs[devIndex].devfirstname} {devs[devIndex].devlastname}</span>
-          : <span id='devIdChange'>select dev</span>}
-          <div className="dropdown-content">
-            {devButtons}
+      <div className='credentialsDiv'>
+        <div className='credentials'>
+          <h1 className='credHeader'>Update Task</h1>
+          <h4 className='credPrompt'>Please enter updated task info:</h4>
+          <input className='input' onChange={(e) => this.handleChange(e)} value={this.state.taskName} name='taskName' placeholder='task name' type="text"/>
+          <input className='input' onChange={(e) => this.handleChange(e)} value={this.state.notes} name='notes' placeholder='notes' type="text"/>
+          <div className="dropdown">
+            {devIndex !== -1 ?
+              <span id='devIdChange'>{devs[devIndex].devfirstname} {devs[devIndex].devlastname}</span>
+              : <span id='devIdChange'>select dev  <img className='dropdownArrow' src="https://image.flaticon.com/icons/svg/60/60995.svg" alt="dropdown arrow"/></span>}
+            <div className="dropdown-content">
+              {devButtons}
+            </div>
           </div>
-        </div>
-
-        <div className="dropdown">
-          {componentIndex !== -1 ?
-            <span id='componentIdChange'>{components[componentIndex].name}</span>
-          : <span id='componentIdChange'>select component</span>}
-          <div className="dropdown-content">
-            {componentButtons}
+          <div className="dropdown">
+            {componentIndex !== -1 ?
+              <span id='componentIdChange'>{components[componentIndex].name}</span>
+              : <span id='componentIdChange'>select component  <img className='dropdownArrow' src="https://image.flaticon.com/icons/svg/60/60995.svg" alt="dropdown arrow"/></span>}
+            <div className="dropdown-content">
+              {componentButtons}
+            </div>
           </div>
+          <input className='input' onChange={(e) => this.handleChange(e)} value={this.state.tickets} name='tickets' placeholder='tickets' type="number"/>
+          <button className='getStarted credBtn' onClick={this.handleLoginFormSubmit}>update</button>
+          <Link to='/tasks'>
+            <button className='getStarted credBtn cancelBtn updateTaskCancel' onClick={this.handleLoginFormSubmit}>cancel</button>
+          </Link>
+          {this.state.updateTaskError && <h3>{this.state.updateTaskErrorMessage}</h3>}
         </div>
-
-        <input onChange={(e) => this.handleChange(e)} value={this.state.tickets} name='tickets' placeholder='tickets' type="number"/>
-        <button onClick={this.handleLoginFormSubmit}>update</button>
-        <Link to='/tasks'>
-          <button onClick={this.handleLoginFormSubmit}>cancel</button>
-        </Link>
-        {this.state.updateTaskError && <h3>{this.state.updateTaskErrorMessage}</h3>}
-      </>
+      </div>
     )
     
   }

@@ -21,7 +21,7 @@ export default class Home extends Component {
                 <h1 className='homeTitle'>mpass</h1>
               </div>
             </div>
-            <h3 className='homeSubtitle'>Web dev organizing made easy.</h3>
+            <h2 className='homeSubtitle'>Web dev organizing made easy.</h2>
             <Link to='/products'>
               <button className='getStarted'>get started</button>
             </Link>
