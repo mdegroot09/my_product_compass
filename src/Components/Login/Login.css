@@ -47,6 +47,7 @@
 
 .credPrompt {
   color: rgb(78, 78, 78);
+  margin: 10px;
 }
 
 .errorMsg {

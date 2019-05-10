@@ -55,17 +55,20 @@ class UpdateProduct extends Component {
 
   render() {
     return (
-      <>
-        <h4>Update Product</h4>
-        <form onSubmit={this.handleLoginFormSubmit}>
-          <input onChange={(e) => this.handleChange(e)} value={this.state.name} name='name' placeholder='product name' type="text"/>
-          <button onClick={this.handleLoginFormSubmit}>update</button>
-          <Link to='/products'>
-            <button>cancel</button>
-          </Link>
-        </form>
-        {this.state.updateProduct && <h3>{this.state.updateProductMessage}</h3>}
-      </>
+      <div className='credentialsDiv'>
+        <div className='credentials'>
+          <h1 className='credHeader'>Update Product</h1>
+          <h4 className='credPrompt'>Please enter an updated product name:</h4>
+          <form className='credInputs' onSubmit={this.handleLoginFormSubmit}>
+            <input className='input' onChange={(e) => this.handleChange(e)} value={this.state.name} name='name' placeholder='product name' type="text"/>
+            <button className='getStarted credBtn' onClick={this.handleLoginFormSubmit}>update</button>
+            <Link to='/products'>
+              <button className='getStarted credBtn cancelBtn'>cancel</button>
+            </Link>
+          </form>
+          {this.state.updateProduct && <h3>{this.state.updateProductMessage}</h3>}
+        </div>
+      </div>
     )
     
   }
