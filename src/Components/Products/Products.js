@@ -40,7 +40,7 @@ class Products extends Component {
     let showProducts = this.props.products.map((product, i) => {
       if (currentProduct === product.product_id){
         return(
-          <h3 className='task' key={i}><span>{product.taskname}</span></h3>
+        <h3 className='task' key={i}><span>&#8226;</span><span>{product.taskname}</span></h3>
         )
       } else {
 
@@ -63,7 +63,7 @@ class Products extends Component {
                 <button className='getStarted editDelete delete' onClick={() => this.deleteProduct(product.product_id)}>Delete</button>
               </div>
             </div>
-            <h3 className='task'><span>{product.taskname}</span></h3>
+            <h3 className='task'><span>&#8226;</span><span>{product.taskname}</span></h3>
           </div>
         )
       }

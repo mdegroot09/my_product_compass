@@ -51,13 +51,14 @@ class newComponentError extends Component {
     }
   }
   
-  componentSelect = (text, component_id) => {
+  componentSelect = (text, newParentId) => {
     let componentIdChange = document.getElementById('componentIdChange')
     componentIdChange.innerText = text
-    this.setState({component_id})
+    this.setState({parent_component: newParentId})
   }
 
   render() {
+    console.log('NewComponent this.state:', this.state)
     let {components} = this.state
     let componentButtons = components.map((component, i) => (
       <button key={i} className='dropdownBtn' onClick={() => this.componentSelect(`${component.name}`, component.component_id)}>{component.name}</button>
