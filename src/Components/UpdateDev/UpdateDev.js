@@ -61,19 +61,22 @@ class UpdateDev extends Component {
 
   render() {
     return (
-      <>
-        <h4>Update Dev</h4>
-        <form onSubmit={this.handleLoginFormSubmit}>
-          <input onChange={(e) => this.handleChange(e)} value={this.state.first_name} name='first_name' placeholder='first name' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} value={this.state.last_name} name='last_name' placeholder='last name' type="text"/>
-          <input onChange={(e) => this.handleChange(e)} value={this.state.title} name='title' placeholder='title' type="text"/>
-          <button onClick={this.handleLoginFormSubmit}>update</button>
-          <Link to='/devs'>
-            <button>cancel</button>
-          </Link>
-        </form>
-        {this.state.updateDevError && <h3>{this.state.updateDevErrorMessage}</h3>}
-      </>
+      <div className='credentialsDiv'>
+        <div className='credentials'>
+          <h1 className='credHeader'>Update Dev</h1>
+          <h4 className='credPrompt'>Please enter updated dev info:</h4>
+          <form className='credInputs' onSubmit={this.handleLoginFormSubmit}>
+            <input className='input' onChange={(e) => this.handleChange(e)} value={this.state.first_name} name='first_name' placeholder='first name' type="text"/>
+            <input className='input' onChange={(e) => this.handleChange(e)} value={this.state.last_name} name='last_name' placeholder='last name' type="text"/>
+            <input className='input' onChange={(e) => this.handleChange(e)} value={this.state.title} name='title' placeholder='title' type="text"/>
+            <button className='getStarted credBtn' onClick={this.handleLoginFormSubmit}>update</button>
+            <Link to='/devs'>
+              <button className='getStarted credBtn cancelBtn'>cancel</button>
+            </Link>
+          </form>
+          {this.state.updateDevError && <h3>{this.state.updateDevErrorMessage}</h3>}
+        </div>
+      </div>
     )
     
   }
