@@ -38,7 +38,6 @@ class Register extends Component {
       this.props.updateEmail(res.data.email)
       this.props.updateCompany(res.data.company)
       this.props.history.push('/products')
-      alert('You are now registered as: ' + res.data.username)
 		} catch (err) {
 			this.setState({ username: '', password: '', registerError: true })
     }

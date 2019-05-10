@@ -38,7 +38,6 @@ class NewProduct extends Component {
       axios.post('/api/products/new', {productName}).then(res => {
         this.props.updateProducts(res.data)
         this.props.history.push('/products')
-        alert(`New product '${productName}' created under manager '${username}'.`)
       })
 		} catch (err) {
 			this.setState({productName: '', newProductError: true})

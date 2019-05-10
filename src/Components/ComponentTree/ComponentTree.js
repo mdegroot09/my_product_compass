@@ -25,7 +25,7 @@ class ComponentTree extends Component {
         await this.setState({components: res.data})
         this.sortComponentTree()
       } catch {
-        console.log('Something went wrong. Try refreshing the page.')
+        console.log('Something went wrong. Refresh the page.')
       }
     } 
   }

@@ -39,7 +39,6 @@ class NewDev extends Component {
       axios.post('/api/devs/new', {first_name, last_name, title}).then(res => {
         this.props.updateDevs(res.data)
         this.props.history.push(`/devs`)
-        alert(`New developer '${first_name} ${last_name}' created under manager '${this.props.username}'.`)
       })
 		} catch (err) {
 			this.setState({first_name: '', last_name: '', title: '', newDevError: true})

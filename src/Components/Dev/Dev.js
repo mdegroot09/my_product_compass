@@ -31,7 +31,6 @@ class Dev extends Component {
   deleteDev = (dev_id) => {
     axios.delete(`/api/devs/${dev_id}`).then(res => {
       this.props.updateDevs(res.data)
-      alert('You jerk.')
       this.props.history.push('/devs')
     }).catch(err => {
       console.log('err:', err)
@@ -39,7 +38,6 @@ class Dev extends Component {
   }
   
   render() {
-    console.log('Dev this.props', this.props)
     let currentProduct = ''
     let devTasks = this.props.dev.map((task, i) => {
       if (currentProduct === task.product_id){

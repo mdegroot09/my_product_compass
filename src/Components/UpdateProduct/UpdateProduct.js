@@ -46,7 +46,6 @@ class UpdateProduct extends Component {
       axios.put(`/api/products/update`, {product_id, name}).then(res => {
         this.props.updateProducts(res.data)
         this.props.history.push(`/products`)
-        alert(`Product '${name}' updated under manager '${this.props.username}'.`)
       })
 		} catch (err) {
 			this.setState({name: '', updateProduct: true})

@@ -44,7 +44,6 @@ class newComponentError extends Component {
 		try {
       axios.post('/api/components/new', {name, parent_component, product_id}).then(res => {
         this.props.history.push(`/componenttree/${product_id}`)
-        alert(`New component '${name}' created under manager '${username}'.`)
       })
 		} catch (err) {
 			this.setState({name: '', parent_component: '', newComponentError: true})

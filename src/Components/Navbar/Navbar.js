@@ -9,7 +9,6 @@ class Header extends Component {
 
   logout = () => {
     axios.get('/auth/logout').then(res => {
-      alert('You have been logged out')
       this.props.updateManagerId('')
       document.location.reload()
     })

@@ -29,7 +29,6 @@ class Products extends Component {
   deleteProduct = (product_id) => {
     axios.delete(`/api/products/${product_id}`).then(res => {
       this.props.updateProducts(res.data)
-      alert('You jerk.')
     }).catch(err => {
       console.log('err:', err)
     })
