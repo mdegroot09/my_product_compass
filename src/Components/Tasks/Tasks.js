@@ -5,12 +5,6 @@ import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom'
 
 class Tasks extends Component { 
-  constructor(props){
-    super(props)
-    this.state = {
-      productName: ''
-    }
-  }
 
   componentWillMount(){
     // if not logged in, reroute to login screen, otherwise render axios call
@@ -53,6 +47,7 @@ class Tasks extends Component {
   }
 
   render() {
+    let {productname} = this.props
     // render a div for each task with its respective data
     let showTasks = this.props.tasks.map((task,i) => (
       // <div className='showTask' key={i}>
@@ -73,13 +68,12 @@ class Tasks extends Component {
         <button className='getStarted editDelete delete' onClick={() => this.deleteTask(task.task_id)}>Delete</button>
       </div>
     ))
-
     // sort the tasks shown by number of tickets
     let showTasksSorted = showTasks.sort((a,b) => a.tickets - b.tickets)
     let product_id = this.props.match.params.id
     return (
       <div className='productsMain'>
-        <h1 className='allProducts'>Product Tasks</h1>
+        <h1 className='allProducts'>'{productname}' Tasks</h1>
         <div className='newTaskTreeDiv'>
           <Link to={`/tasks/new/${product_id}`}>
             <button className='getStarted newProductBtn' id='newTask'>New Task</button>
@@ -99,11 +93,12 @@ class Tasks extends Component {
 }
 
 let mapStateToProps = (reduxState) => {
-  const {tasks, manager_id, productid} = reduxState
+  const {tasks, manager_id, productid, productname} = reduxState
   return {
     tasks,
     manager_id,
-    productid
+    productid,
+    productname
   }
 }
 

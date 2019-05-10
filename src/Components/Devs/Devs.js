@@ -31,25 +31,34 @@ class Devs extends Component {
   
   render() {
     let showDevs = this.props.devs.map((dev, i) => (
-      <div className='showDev' key={i}>
-        <Link to={`/devs/${dev.dev_id}`}>
-          <button className='showDevDetail'>Developer: {dev.devfirstname} {dev.devlastname}</button>
-        </Link>
-        <p className='showDevDetail'>Title: {dev.title}</p>
-        <p className='showDevDetail'>Company: {dev.company}</p>
-        <p className='showDevDetail'>Manager: {dev.mgrfirstname} {dev.mgrlastname}</p>
-        <button onClick={() => this.deleteDev(dev.dev_id)}>Delete</button>
-        <Link to={`/devs/update/${dev.dev_id}`}>
-          <button>Edit</button>
-        </Link>
+      <div key={i}>
+        <div className='productsDetails' key={i}>
+          <Link to={`/devs/${dev.dev_id}`}>
+            <button className='productNameBtn'>{dev.devfirstname} {dev.devlastname}</button>
+          </Link>
+          <div className='productsBtns'>
+            <Link to={`/devs/update/${dev.dev_id}`}>
+              <button className='getStarted editDelete'>Edit</button>
+            </Link>
+            <button className='getStarted editDelete delete' onClick={() => this.deleteDev(dev.dev_id)}>Delete</button>
+          </div>
+        </div>
+        <div>
+          <h3 className='task'>Title: {dev.title}</h3>
+          <h3 className='task'>Company: {dev.company}</h3>
+          <h3 className='task'>Manager: {dev.mgrfirstname} {dev.mgrlastname}</h3>
+        </div>
       </div>
     ))
     return (
-      <div>
-        <Link to='/devs/new'>
-          <button>New Developer</button>
-        </Link>
-        {showDevs}
+      <div className='productsMain'>
+        <h1 className='allProducts'>All Devs</h1>
+          <Link to='/devs/new'>
+            <button className='getStarted newProductBtn'>New Dev</button>
+          </Link>
+          <div className='productsSubMain'>
+            {showDevs}
+          </div>
       </div>
     )
   }

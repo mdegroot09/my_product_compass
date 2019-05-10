@@ -1,5 +1,4 @@
 .productsMain {
-  /* width: 100vw; */
   height: calc(100vh - 70px);
   display: flex;
   justify-content: flex-start;
@@ -19,6 +18,9 @@
   border: 2px solid rgb(218, 218, 218);
   border-radius: 3px;
   background: rgba(206, 206, 206, 0.61);
+  width: 100vw;
+  max-width: 800px;
+  height: 100vh;
 }
 
 .newProductBtn {
@@ -57,6 +59,7 @@
   text-align: left;
   cursor: pointer;
   transition: all .15s ease-in-out;
+  text-transform: none;
 }
 
 .productNameBtn:hover {
@@ -99,7 +102,7 @@
   width: 30px;
   background: transparent;
   cursor: pointer;
-  margin-left: 25vw;
+  margin-left: 0vw;
   transition: all .15s ease-in-out;
 }
 
@@ -111,7 +114,7 @@
 .hideMeBtn {
   background: transparent;
   border: transparent;
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 @media (max-width: 700px){
@@ -121,4 +124,8 @@
   .productsBtns {
     flex-direction: column;
   }
+}
+
+.tasksTitle {
+  text-decoration: underline;
 }

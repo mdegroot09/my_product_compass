@@ -63,6 +63,7 @@ class Products extends Component {
                 <button className='getStarted editDelete delete' onClick={() => this.deleteProduct(product.product_id)}>Delete</button>
               </div>
             </div>
+            <h2 className='task tasksTitle'>Tasks</h2>
             <h3 className='task'><span>&#8226;</span><span>{product.taskname}</span></h3>
           </div>
         )
