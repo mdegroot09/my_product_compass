@@ -1,6 +1,12 @@
+@import '../../variables';
+
+@mixin flex {
+  display: flex;
+}
+
 .productsMain {
   height: calc(100vh - 70px);
-  display: flex;
+  @include flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
@@ -17,7 +23,7 @@
   position: relative;
   border: 2px solid rgb(218, 218, 218);
   border-radius: 3px;
-  background: rgba(206, 206, 206, 0.61);
+  background: $background;
   width: 100vw;
   max-width: 800px;
   height: 100vh;
@@ -33,20 +39,20 @@
 
 .productsDetails {
   margin-top: 20px;
-  display: flex;
+  @include flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .productsBtns {
   margin-right: 30px;
-  display: flex;
+  @include flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .productNameBtn {
-  color: rgb(0, 146, 231);
+  color: $buttonBlue;
   text-shadow: 0px 0px 10px rgba(206, 206, 206, 0.726);
   background: transparent;
   border: transparent;
@@ -92,7 +98,7 @@
 .task {
   color: rgb(0, 19, 71);
   width: 100%;
-  display: flex;
+  @include flex;
   justify-content: flex-start;
   align-items: flex-start;
   margin: 2px 0 0 10%;

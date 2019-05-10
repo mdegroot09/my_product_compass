@@ -1,0 +1,43 @@
+@import './variables';
+@import './Components/Navbar/Navbar';
+@import './Components/Home/Home';
+@import './Components/Tasks/Tasks';
+@import './Components/Devs/Devs';
+@import './Components/Dev/Dev';
+@import './Components/ComponentTree/ComponentTree';
+@import './Components/NewTask/NewTask';
+@import './Components/Login/Login';
+@import './Components/Register/Register';
+@import './Components/Products/Products';
+@import './Components/NewProduct/NewProduct';
+@import './Components/NewComponent/NewComponent';
+@import './Components/UpdateTask/UpdateTask';
+@import './Components/NewDev/NewDev';
+
+body {
+  background-image: url('https://utilligent.com/wp-content/uploads/2017/11/Skyscrapers-904377316.jpg'); 
+  background-size: 100vw 100vh;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100wh;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  position: relative;
+}
+
+.root {
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  text-align: center;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  text-transform: lowercase;
+}
+
