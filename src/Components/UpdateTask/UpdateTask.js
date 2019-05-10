@@ -61,10 +61,9 @@ class UpdateTask extends Component {
       axios.put(`/api/tasks/update`, {task_id, name, notes, dev_id, component_id, tickets}).then(res => {
         this.props.updateTasks(res.data)
         this.props.history.push(`/tasks/${product_id}`)
-        alert(`Task '${name}' updated under manager '${this.props.username}'.`)
       })
 		} catch (err) {
-      console.log('it didnt work')
+      console.log('Something went wrong.')
 			this.setState({taskName: '', notes: '', dev_id: 0, component_id: 0, tickets: 0, updateTaskError: true})
     }
   }

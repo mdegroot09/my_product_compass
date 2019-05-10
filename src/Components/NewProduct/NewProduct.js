@@ -36,7 +36,6 @@ class NewProduct extends Component {
     const {username} = this.props
 		try {
       axios.post('/api/products/new', {productName}).then(res => {
-        console.log('NewProduct res.data:', res.data)
         this.props.updateProducts(res.data)
         this.props.history.push('/products')
         alert(`New product '${productName}' created under manager '${username}'.`)

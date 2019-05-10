@@ -7,7 +7,6 @@ import axios from 'axios'
 class UpdateDev extends Component {
   constructor(props){
     super(props)
-    console.log(this.props)
     this.state = {
       first_name: '',
       last_name: '',
@@ -48,13 +47,10 @@ class UpdateDev extends Component {
     let dev_id = this.props.match.params.id
 		try {
       axios.put('/api/devs/update', {first_name, last_name, title, dev_id}).then(res => {
-        console.log('it worked')
         this.props.updateDev(res.data)
         this.props.history.push('/devs')
-        alert(`Developer '${first_name} ${last_name}' updated under manager '${this.props.username}'.`)
       })
 		} catch (err) {
-      console.log('it didnt work')
 			this.setState({first_name: '', last_name: '', title: '', updateDevError: true})
     }
   }

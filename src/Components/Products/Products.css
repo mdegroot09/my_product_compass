@@ -1,5 +1,5 @@
 .productsMain {
-  width: 100vw;
+  /* width: 100vw; */
   height: calc(100vh - 70px);
   display: flex;
   justify-content: flex-start;
@@ -111,6 +111,7 @@
 .hideMeBtn {
   background: transparent;
   border: transparent;
+  text-transform: capitalize;
 }
 
 @media (max-width: 700px){

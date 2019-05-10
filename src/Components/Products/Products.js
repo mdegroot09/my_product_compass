@@ -70,7 +70,7 @@ class Products extends Component {
     })
     return (
       <div className='productsMain'>
-        <h1 className='allProducts'>All Products</h1>
+        <h1 className='allProducts'>My Products</h1>
         <Link to='/products/new'>
           <button className='getStarted newProductBtn'>new product</button>
         </Link>

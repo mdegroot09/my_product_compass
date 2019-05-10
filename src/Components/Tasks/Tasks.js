@@ -55,21 +55,22 @@ class Tasks extends Component {
   render() {
     // render a div for each task with its respective data
     let showTasks = this.props.tasks.map((task,i) => (
-      <div className='showTask' key={i}>
-          <p>Task: {task.name}</p>
-          <p>Notes: {task.notes}</p>
-          <Link to={`/devs/${task.dev_id}`}>
-            <button>Dev: {task.first_name} {task.last_name}</button>
-          </Link>
-          <p>Requests/Tickets: 
-            <button onClick={() => this.decrement(task.task_id)}>-</button>
-            {task.tickets}
-            <button onClick={() => this.increment(task.task_id)}>+</button>
-          </p>
-          <button onClick={() => this.deleteTask(task.task_id)}>Delete</button>
-          <Link to={`/tasks/update/${task.task_id}`}>
-            <button>Edit</button>
-          </Link>
+      // <div className='showTask' key={i}>
+      <div className='taskSection' key={i}>
+        <h1 className='taskTitle'>Task: {task.name}</h1>
+        <Link to={`/devs/${task.dev_id}`}>
+          <button className='hideMeBtn'><p className='devNameLink'>Dev: {task.first_name} {task.last_name}</p></button>
+        </Link>
+        <p className='tasksLoop'>Notes: '{task.notes}'</p>
+        <p className='plusMinusBtns'>Requests/Tickets: 
+          <button className='hideMeBtn plusMinusBtn minusBtn' onClick={() => this.decrement(task.task_id)}>-</button>
+          {task.tickets}
+          <button className='hideMeBtn plusMinusBtn' onClick={() => this.increment(task.task_id)}>+</button>
+        </p>
+        <Link to={`/tasks/update/${task.task_id}`}>
+          <button className='getStarted editDelete' id='editBtn'>Edit</button>
+        </Link>
+        <button className='getStarted editDelete delete' onClick={() => this.deleteTask(task.task_id)}>Delete</button>
       </div>
     ))
 
@@ -77,14 +78,21 @@ class Tasks extends Component {
     let showTasksSorted = showTasks.sort((a,b) => a.tickets - b.tickets)
     let product_id = this.props.match.params.id
     return (
-      <div>
-        <Link to={`/tasks/new/${product_id}`}>
-          <button>New Task</button>
-        </Link>
-        <Link to={`/componenttree/${product_id}`}>
-          <button>Product Tree</button>
-        </Link>
-        {showTasksSorted}
+      <div className='productsMain'>
+        <h1 className='allProducts'>Product Tasks</h1>
+        <div className='newTaskTreeDiv'>
+          <Link to={`/tasks/new/${product_id}`}>
+            <button className='getStarted newProductBtn' id='newTask'>New Task</button>
+          </Link>
+          <Link to={`/componenttree/${product_id}`}>
+            <button className='hideMeBtn'>
+              <img className='treeIcon' id='treeIconTasks' src="https://i.ibb.co/F8Z4t3G/diagram-icon-inverted.png" alt="component tree icon"/>
+            </button>
+          </Link>
+        </div>
+        <div className='productsSubMain'>
+          {showTasksSorted}
+        </div>
       </div>
     )
   }

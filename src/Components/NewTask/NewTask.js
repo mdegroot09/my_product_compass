@@ -51,10 +51,8 @@ class NewTask extends Component {
     const {productid} = this.props
 		try {
       axios.post('/api/tasks/new', {taskName, notes, dev_id, component_id, tickets, productid}).then(res => {
-        console.log('NewProduct res.data:', res.data)
         this.props.updateProducts(res.data)
         this.props.history.push(`/tasks/${this.props.productid}`)
-        alert(`New task '${taskName}' created under project '${this.props.productname}'.`)
       })
 		} catch (err) {
 			this.setState({taskname: '', due_date: '', notes: '', dev_id: 0, component_id: 0, tickets: 0, newTaskError: true})

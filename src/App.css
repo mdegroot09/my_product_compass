@@ -21,4 +21,7 @@ body {
   width: 100%;
 }
 
+button {
+  text-transform: lowercase;
+}
 
