@@ -1,0 +1,22 @@
+.dropdown  {
+  background: rgb(255, 255, 255);
+  margin-top: 10px;
+  height: 30px;
+  width: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  border: rgba(192, 192, 192, 0.856) solid 1px;
+}
+
+#componentIdChange {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdownArrow {
+  width: 15px;
+  margin-left: 5px;
+}

@@ -64,21 +64,24 @@ class newComponentError extends Component {
     ))
     let product_id = this.props.match.params.id
     return (
-      <>
-        <h3>New Component</h3>
-        <input onChange={(e) => this.handleChange(e)} name='name' placeholder='component name' type="text"/>
-        <div className="dropdown">
-          <span id='componentIdChange'>select component</span>
-          <div className="dropdown-content">
-            {componentButtons}
+      <div className='credentialsDiv'>
+        <div className='credentials'>
+          <h1 className='credHeader'>New Component</h1>
+          <h4 className='credPrompt'>Please enter details for a new component:</h4>
+          <input className='input' onChange={(e) => this.handleChange(e)} name='name' placeholder='component name' type="text"/>
+          <div className="dropdown">
+            <span id='componentIdChange'>parent component <img className='dropdownArrow' src="https://image.flaticon.com/icons/svg/60/60995.svg" alt="dropdown arrow"/></span>
+            <div className="dropdown-content">
+              {componentButtons}
+            </div>
           </div>
+          <button className='getStarted credBtn' onClick={this.handleLoginFormSubmit}>create</button>
+          <Link to={`/componenttree/${product_id}`}>
+            <button className='getStarted credBtn cancelBtn'>cancel</button>
+          </Link>
+          {this.state.newComponentError && <h3>{this.state.newComponentErrorMessage}</h3>}
         </div>
-        <button onClick={this.handleLoginFormSubmit}>create</button>
-        <Link to={`/componenttree/${product_id}`}>
-          <button>cancel</button>
-        </Link>
-        {this.state.newComponentError && <h3>{this.state.newComponentErrorMessage}</h3>}
-      </>
+      </div>
     )
   }
 }
