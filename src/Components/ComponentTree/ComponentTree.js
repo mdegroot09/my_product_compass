@@ -27,7 +27,7 @@ class ComponentTree extends Component {
       } catch {
         console.log('Something went wrong. Try refreshing the page.')
       }
-    }
+    } 
   }
 
   sortComponentTree = async () => {
@@ -71,22 +71,22 @@ class ComponentTree extends Component {
   render() {
     let product_id = this.props.match.params.id
     return (
-      <>
+      <div className='componentTreeMain'>
         <h1>Component Tree</h1>
         <div className='componentTree'>
           <Link to={`/components/new/${product_id}`}>
-            <button>New Component</button>
+            <button className='getStarted newComponentBtn'>New Component</button>
           </Link>
           <Link to={`/tasks/${product_id}`}>
-            <button>Go To Tasks</button>
+            <button className='getStarted newComponentBtn cancelComponentBtn'>See Tasks</button>
           </Link>
           <SortableTree
             treeData={this.state.treeData}
             onChange={treeData => this.setState({ treeData })}
             onMoveNode={(e) => this.updateParentId(e)}
-          />
+            />
         </div>
-      </>
+      </div>
     );
   }
 }
