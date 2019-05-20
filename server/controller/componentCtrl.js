@@ -26,7 +26,6 @@ module.exports = {
   },
 
   createComponent: async (req, res) => {
-    console.log('req.body:', req.body)
     let manager_id = req.session.user.id
     let {name, parent_component, product_id} = req.body
     let db = req.app.get('db')
