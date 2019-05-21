@@ -125,10 +125,13 @@
 
 @media (max-width: 700px){
   .treeIcon {
-    margin-left: 20px;
+    margin-left: 30px;
   }
   .productsBtns {
     flex-direction: column;
+  }
+  .editDelete {
+    margin-top: 7px;
   }
 }
 
