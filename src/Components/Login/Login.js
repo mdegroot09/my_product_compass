@@ -49,7 +49,7 @@ class Login extends Component {
             <input className='input' onChange={(e) => this.handleChange(e)} name='password' placeholder='password' type="password" autoComplete='cc-number'/>
             <button className='getStarted credBtn'>log in</button>
           </form>
-          <p className='errorMsg'>{this.state.loginError && <h3>{this.state.loginErrorMessage}</h3>}</p>
+          <p className='errorMsg'>{this.state.loginError && <p>{this.state.loginErrorMessage}</p>}</p>
         </div>
       </div>
     )

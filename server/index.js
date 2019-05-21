@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const session = require('express-session')
 const massive = require('massive')
+const path = require('path')
 const taskCtrl = require('./controller/taskCtrl')
 const devCtrl = require('./controller/devCtrl')
 const productCtrl = require('./controller/productCtrl')
@@ -10,6 +11,8 @@ const componentCtrl = require('./controller/componentCtrl')
 const authCtrl = require('./controller/authCtrl')
 const auth = require('./middleware/authMiddleware')
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
+
+app.use(express.static(`${__dirname}/../build`))
 
 // get access to req.body in controllers
 app.use(express.json())
@@ -63,3 +66,8 @@ app.get('/api/components/taskcount/:id', auth.usersOnly, componentCtrl.getCompon
 app.get('/api/components/:id', auth.usersOnly, componentCtrl.getComponents)
 app.post('/api/components/new', auth.usersOnly, componentCtrl.createComponent)
 app.put('/api/components/update/:id', auth.usersOnly, componentCtrl.updateParentId)
+
+// catch-all for everything other than endpoints listed above
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
